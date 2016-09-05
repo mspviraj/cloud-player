@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4F1CBBAA1D7D98D800C1FF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBA91D7D98D800C1FF1D /* AppDelegate.swift */; };
-		4F1CBBAC1D7D98D800C1FF1D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBAB1D7D98D800C1FF1D /* FirstViewController.swift */; };
-		4F1CBBAE1D7D98D800C1FF1D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBAD1D7D98D800C1FF1D /* SecondViewController.swift */; };
 		4F1CBBB11D7D98D800C1FF1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1CBBAF1D7D98D800C1FF1D /* Main.storyboard */; };
 		4F1CBBB31D7D98D900C1FF1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1CBBB21D7D98D900C1FF1D /* Assets.xcassets */; };
 		4F1CBBB61D7D98D900C1FF1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1CBBB41D7D98D900C1FF1D /* LaunchScreen.storyboard */; };
 		4F1CBBC11D7D98D900C1FF1D /* Cloud_PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBC01D7D98D900C1FF1D /* Cloud_PlayerTests.swift */; };
 		4F1CBBCC1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */; };
+		4FBB462C1D7DEED6000D3F2F /* Songs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */; };
+		4FBB462F1D7DEEE5000D3F2F /* Playlists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */; };
+		4FBB46321D7DEF5C000D3F2F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */; };
+		4FBB46351D7DEFB8000D3F2F /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB46331D7DEFB8000D3F2F /* Favorites.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +39,6 @@
 /* Begin PBXFileReference section */
 		4F1CBBA61D7D98D800C1FF1D /* Cloud Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cloud Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1CBBA91D7D98D800C1FF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F1CBBAB1D7D98D800C1FF1D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		4F1CBBAD1D7D98D800C1FF1D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		4F1CBBB01D7D98D800C1FF1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F1CBBB21D7D98D900C1FF1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F1CBBB51D7D98D900C1FF1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +49,10 @@
 		4F1CBBC71D7D98D900C1FF1D /* Cloud PlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cloud PlayerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud_PlayerUITests.swift; sourceTree = "<group>"; };
 		4F1CBBCD1D7D98D900C1FF1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FBB462B1D7DEED6000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Songs.storyboard; sourceTree = "<group>"; };
+		4FBB462E1D7DEEE5000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Playlists.storyboard; sourceTree = "<group>"; };
+		4FBB46311D7DEF5C000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		4FBB46341D7DEFB8000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Favorites.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +105,11 @@
 			children = (
 				4F1CBBB71D7D98D900C1FF1D /* Info.plist */,
 				4F1CBBA91D7D98D800C1FF1D /* AppDelegate.swift */,
-				4F1CBBAB1D7D98D800C1FF1D /* FirstViewController.swift */,
-				4F1CBBAD1D7D98D800C1FF1D /* SecondViewController.swift */,
 				4F1CBBB21D7D98D900C1FF1D /* Assets.xcassets */,
+				4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */,
+				4FBB46331D7DEFB8000D3F2F /* Favorites.storyboard */,
+				4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */,
+				4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */,
 				4F1CBBAF1D7D98D800C1FF1D /* Main.storyboard */,
 				4F1CBBB41D7D98D900C1FF1D /* LaunchScreen.storyboard */,
 			);
@@ -236,6 +242,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F1CBBB61D7D98D900C1FF1D /* LaunchScreen.storyboard in Resources */,
+				4FBB462F1D7DEEE5000D3F2F /* Playlists.storyboard in Resources */,
+				4FBB462C1D7DEED6000D3F2F /* Songs.storyboard in Resources */,
+				4FBB46321D7DEF5C000D3F2F /* Settings.storyboard in Resources */,
+				4FBB46351D7DEFB8000D3F2F /* Favorites.storyboard in Resources */,
 				4F1CBBB31D7D98D900C1FF1D /* Assets.xcassets in Resources */,
 				4F1CBBB11D7D98D800C1FF1D /* Main.storyboard in Resources */,
 			);
@@ -262,9 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F1CBBAE1D7D98D800C1FF1D /* SecondViewController.swift in Sources */,
 				4F1CBBAA1D7D98D800C1FF1D /* AppDelegate.swift in Sources */,
-				4F1CBBAC1D7D98D800C1FF1D /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +322,38 @@
 				4F1CBBB51D7D98D900C1FF1D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FBB462B1D7DEED6000D3F2F /* Base */,
+			);
+			name = Songs.storyboard;
+			sourceTree = "<group>";
+		};
+		4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FBB462E1D7DEEE5000D3F2F /* Base */,
+			);
+			name = Playlists.storyboard;
+			sourceTree = "<group>";
+		};
+		4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FBB46311D7DEF5C000D3F2F /* Base */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		4FBB46331D7DEFB8000D3F2F /* Favorites.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FBB46341D7DEFB8000D3F2F /* Base */,
+			);
+			name = Favorites.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -491,6 +531,7 @@
 				4F1CBBD21D7D98D900C1FF1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F1CBBD31D7D98D900C1FF1D /* Build configuration list for PBXNativeTarget "Cloud PlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +540,7 @@
 				4F1CBBD51D7D98D900C1FF1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F1CBBD61D7D98D900C1FF1D /* Build configuration list for PBXNativeTarget "Cloud PlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +549,7 @@
 				4F1CBBD81D7D98D900C1FF1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
