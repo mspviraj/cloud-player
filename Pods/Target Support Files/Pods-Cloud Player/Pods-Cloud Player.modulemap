@@ -1,0 +1,6 @@
+framework module Pods_Cloud_Player {
+  umbrella header "Pods-Cloud Player-umbrella.h"
+
+  export *
+  module * { export * }
+}

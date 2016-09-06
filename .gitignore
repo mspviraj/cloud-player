@@ -198,3 +198,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Custom files
+Cloud\ Player/API.plist
+Cloud\ Player/Info.plist

@@ -1,0 +1,6 @@
+framework module Pods_Cloud_PlayerUITests {
+  umbrella header "Pods-Cloud PlayerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
