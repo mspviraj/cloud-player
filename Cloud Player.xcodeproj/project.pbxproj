@@ -16,6 +16,9 @@
 		4FAE875E1D7EA08400456AE5 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE875D1D7EA08400456AE5 /* API.plist */; };
 		4FAE87611D7EA0B200456AE5 /* API-SAMPLE.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */; };
 		4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE87641D7EA27000456AE5 /* APIConstants.swift */; };
+		4FAE87671D7EA50D00456AE5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE87661D7EA50D00456AE5 /* Info.plist */; };
+		4FAE87691D7EA67600456AE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE87681D7EA67600456AE5 /* LoginViewController.swift */; };
+		4FAE876B1D7EA78400456AE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */; };
 		4FBB462C1D7DEED6000D3F2F /* Songs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */; };
 		4FBB462F1D7DEEE5000D3F2F /* Playlists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */; };
 		4FBB46321D7DEF5C000D3F2F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */; };
@@ -63,6 +66,9 @@
 		4FAE875D1D7EA08400456AE5 /* API.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API-SAMPLE.plist"; sourceTree = "<group>"; };
 		4FAE87641D7EA27000456AE5 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		4FAE87661D7EA50D00456AE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FAE87681D7EA67600456AE5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4FBB462B1D7DEED6000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Songs.storyboard; sourceTree = "<group>"; };
 		4FBB462E1D7DEEE5000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Playlists.storyboard; sourceTree = "<group>"; };
 		4FBB46311D7DEF5C000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				4FAE875F1D7EA09A00456AE5 /* Supporting Files */,
+				4FAE87641D7EA27000456AE5 /* APIConstants.swift */,
+				4FAE87681D7EA67600456AE5 /* LoginViewController.swift */,
+				4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */,
 				4F1CBBB21D7D98D900C1FF1D /* Assets.xcassets */,
 				4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */,
 				4FBB46331D7DEFB8000D3F2F /* Favorites.storyboard */,
@@ -157,7 +166,6 @@
 				4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */,
 				4F1CBBAF1D7D98D800C1FF1D /* Main.storyboard */,
 				4F1CBBB41D7D98D900C1FF1D /* LaunchScreen.storyboard */,
-				4FAE87641D7EA27000456AE5 /* APIConstants.swift */,
 			);
 			path = "Cloud Player";
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 			children = (
 				4F1CBBA91D7D98D800C1FF1D /* AppDelegate.swift */,
 				4FAE875D1D7EA08400456AE5 /* API.plist */,
+				4FAE87661D7EA50D00456AE5 /* Info.plist */,
 				4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */,
 				4F1CBBB71D7D98D900C1FF1D /* Info-SAMPLE.plist */,
 			);
@@ -314,6 +323,7 @@
 				4FAE87611D7EA0B200456AE5 /* API-SAMPLE.plist in Resources */,
 				4FAE875E1D7EA08400456AE5 /* API.plist in Resources */,
 				4F1CBBB31D7D98D900C1FF1D /* Assets.xcassets in Resources */,
+				4FAE87671D7EA50D00456AE5 /* Info.plist in Resources */,
 				4F1CBBB11D7D98D800C1FF1D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,8 +472,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FAE87691D7EA67600456AE5 /* LoginViewController.swift in Sources */,
 				4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */,
 				4F1CBBAA1D7D98D800C1FF1D /* AppDelegate.swift in Sources */,
+				4FAE876B1D7EA78400456AE5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,7 +652,7 @@
 			baseConfigurationReference = 30A3F2E22077B1B04CF75175 /* Pods-Cloud Player.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Info-SAMPLE.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-Player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,7 +664,7 @@
 			baseConfigurationReference = 209A4A5BDDB060585E4DB08A /* Pods-Cloud Player.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Info-SAMPLE.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-Player";
 				PRODUCT_NAME = "$(TARGET_NAME)";

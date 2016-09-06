@@ -8,7 +8,7 @@
         <!--Settings-->
         <scene sceneID="a41-dM-KRc">
             <objects>
-                <viewController id="qc4-5I-eDx" sceneMemberID="viewController">
+                <viewController id="qc4-5I-eDx" customClass="SettingsViewController" customModule="Cloud_Player" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ecl-yZ-Xvy"/>
                         <viewControllerLayoutGuide type="bottom" id="rCP-7b-sRh"/>
@@ -18,7 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="pOw-Jz-60b"/>
+                    <navigationItem key="navigationItem" title="Settings" id="pOw-Jz-60b">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="ke9-fu-779">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="qc4-5I-eDx" id="3sX-qW-vsN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFb-Zn-xgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
