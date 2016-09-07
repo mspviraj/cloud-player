@@ -25,4 +25,9 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(sender: UIButton) {
         Dropbox.authorizeFromController(self)
     }
+    
+    @IBAction func createAccountButtonPressed(sender: UIButton) {
+        let url = NSURL(string: "https://www.dropbox.com/m/register")!
+        UIApplication.sharedApplication().openURL(url)
+    }
 }
