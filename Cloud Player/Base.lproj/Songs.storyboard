@@ -8,7 +8,7 @@
         <!--Songs-->
         <scene sceneID="f6V-yE-iw8">
             <objects>
-                <viewController id="T9B-uW-zTv" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="T9B-uW-zTv" customClass="SongsViewController" customModule="Cloud_Player" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UIs-HU-i8e"/>
                         <viewControllerLayoutGuide type="bottom" id="8xb-RR-alY"/>
@@ -16,9 +16,43 @@
                     <view key="view" contentMode="scaleToFill" id="mXA-T8-l1g">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Hb-nw-ALR">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongsTableViewCell" textLabel="Kcj-fB-8bJ" style="IBUITableViewCellStyleDefault" id="ShG-Ul-s21">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ShG-Ul-s21" id="du2-Q9-DFU">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kcj-fB-8bJ">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6Hb-nw-ALR" secondAttribute="trailing" id="0Cl-f7-d2v"/>
+                            <constraint firstItem="6Hb-nw-ALR" firstAttribute="top" secondItem="UIs-HU-i8e" secondAttribute="bottom" id="Jxu-JT-ci6"/>
+                            <constraint firstItem="6Hb-nw-ALR" firstAttribute="leading" secondItem="mXA-T8-l1g" secondAttribute="leading" id="Qjh-Bg-szf"/>
+                            <constraint firstItem="8xb-RR-alY" firstAttribute="top" secondItem="6Hb-nw-ALR" secondAttribute="bottom" id="yVu-OL-WLM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Songs" id="hYa-QA-wVd"/>
+                    <connections>
+                        <outlet property="songsTableView" destination="6Hb-nw-ALR" id="mHK-Fg-eud"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Kd-XD-7X2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
