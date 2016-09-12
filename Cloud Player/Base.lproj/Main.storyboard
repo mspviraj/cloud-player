@@ -58,9 +58,6 @@
                                                         <integer key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="loginButtonPressed:" destination="uQc-yO-cxK" eventType="touchUpInside" id="8Jy-U5-vdQ"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7k-Cx-jLH">
                                                 <rect key="frame" x="0.0" y="64" width="260" height="40"/>
@@ -77,9 +74,6 @@
                                                         <integer key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="createAccountButtonPressed:" destination="uQc-yO-cxK" eventType="touchUpInside" id="3yf-00-yTC"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -93,6 +87,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="createAccountButton" destination="q7k-Cx-jLH" id="Z5u-n8-XQH"/>
+                        <outlet property="loginButton" destination="VgV-RE-crf" id="4si-xg-Ehc"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="TabBarControllerSegue" id="suA-xc-NtT"/>
                     </connections>
                 </viewController>

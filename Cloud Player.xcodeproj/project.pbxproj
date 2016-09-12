@@ -13,6 +13,7 @@
 		4F1CBBB61D7D98D900C1FF1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1CBBB41D7D98D900C1FF1D /* LaunchScreen.storyboard */; };
 		4F1CBBC11D7D98D900C1FF1D /* Cloud_PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBC01D7D98D900C1FF1D /* Cloud_PlayerTests.swift */; };
 		4F1CBBCC1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */; };
+		4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5433D21D8735ED00495C32 /* LoginViewModel.swift */; };
 		4FAE875E1D7EA08400456AE5 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE875D1D7EA08400456AE5 /* API.plist */; };
 		4FAE87611D7EA0B200456AE5 /* API-SAMPLE.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */; };
 		4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE87641D7EA27000456AE5 /* APIConstants.swift */; };
@@ -63,6 +64,7 @@
 		4F1CBBC71D7D98D900C1FF1D /* Cloud PlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cloud PlayerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud_PlayerUITests.swift; sourceTree = "<group>"; };
 		4F1CBBCD1D7D98D900C1FF1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F5433D21D8735ED00495C32 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4FAE875D1D7EA08400456AE5 /* API.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API-SAMPLE.plist"; sourceTree = "<group>"; };
 		4FAE87641D7EA27000456AE5 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		4F5433CD1D87310100495C32 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4F5433D21D8735ED00495C32 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 			files = (
 				4FAE87691D7EA67600456AE5 /* LoginViewController.swift in Sources */,
 				4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */,
+				4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */,
 				4FAE876D1D7EA9C600456AE5 /* SongsViewController.swift in Sources */,
 				4F1CBBAA1D7D98D800C1FF1D /* AppDelegate.swift in Sources */,
 				4FAE876B1D7EA78400456AE5 /* SettingsViewController.swift in Sources */,

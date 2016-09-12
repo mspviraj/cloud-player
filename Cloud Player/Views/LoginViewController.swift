@@ -7,27 +7,46 @@
 //
 
 import UIKit
-import SwiftyDropbox
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
-
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
+    
+    // MARK: - Properties
+    
+    let viewModel = LoginViewModel()
+    let disposeBag = DisposeBag()
+    
     // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                
+        loginButton.rx_tap
+            .map { [unowned self] _ in
+                return self
+            }
+            .bindTo(viewModel.loginButtonVariable)
+            .addDisposableTo(disposeBag)
+        
+        createAccountButton.rx_tap
+            .bindTo(viewModel.createAccountButtonVariable)
+            .addDisposableTo(disposeBag)
+        
+        viewModel.authorizedCliendObservable
+            .subscribeNext { [unowned self] _ in
+                self.performSegueWithIdentifier("TabBarControllerSegue", sender: nil)
+            }
+            .addDisposableTo(disposeBag)
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if Dropbox.authorizedClient != nil {
-            performSegueWithIdentifier("TabBarControllerSegue", sender: nil)
-        }
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func loginButtonPressed(sender: UIButton) {
-        Dropbox.authorizeFromController(self)
-    }
-    
-    @IBAction func createAccountButtonPressed(sender: UIButton) {
-        let url = NSURL(string: "https://www.dropbox.com/m/register")!
-        UIApplication.sharedApplication().openURL(url)
+        viewModel.authorizeClient()
     }
 }
