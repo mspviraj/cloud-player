@@ -1,15 +1,22 @@
 PODS:
   - Alamofire (3.3.1)
+  - RxCocoa (2.6.0):
+    - RxSwift (~> 2.5)
+  - RxSwift (2.6.0)
   - SwiftyDropbox (3.2.0):
     - Alamofire (~> 3.3.1)
 
 DEPENDENCIES:
+  - RxCocoa (~> 2.6)
+  - RxSwift (~> 2.6)
   - SwiftyDropbox
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
+  RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   SwiftyDropbox: fba9da0b1b72ae51edfeb1ee2a13aaef852ea6d7
 
-PODFILE CHECKSUM: ac7c91861ce260392a52612130cc1afa03a17002
+PODFILE CHECKSUM: ddde0eecf2539a7227a1a32936039c980e6ea748
 
 COCOAPODS: 1.0.1

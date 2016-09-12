@@ -200,5 +200,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # Custom files
-Cloud\ Player/API.plist
-Cloud\ Player/Info.plist
+Cloud\ Player/Supporting\ Files/API.plist
+Cloud\ Player/Supporting\ Files/Info.plist

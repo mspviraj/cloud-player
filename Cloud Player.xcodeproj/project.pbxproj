@@ -157,17 +157,13 @@
 			isa = PBXGroup;
 			children = (
 				4FAE875F1D7EA09A00456AE5 /* Supporting Files */,
-				4FAE87641D7EA27000456AE5 /* APIConstants.swift */,
-				4FAE87681D7EA67600456AE5 /* LoginViewController.swift */,
-				4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */,
-				4FAE876C1D7EA9C600456AE5 /* SongsViewController.swift */,
+				4F5433D01D87319000495C32 /* Managers */,
+				4F5433CE1D87311900495C32 /* Stores */,
+				4F5433CC1D8730F200495C32 /* Models */,
+				4F5433CD1D87310100495C32 /* ViewModels */,
+				4F5433CB1D8730D900495C32 /* Views */,
+				4F5433CF1D87314200495C32 /* User Interface */,
 				4F1CBBB21D7D98D900C1FF1D /* Assets.xcassets */,
-				4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */,
-				4FBB46331D7DEFB8000D3F2F /* Favorites.storyboard */,
-				4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */,
-				4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */,
-				4F1CBBAF1D7D98D800C1FF1D /* Main.storyboard */,
-				4F1CBBB41D7D98D900C1FF1D /* LaunchScreen.storyboard */,
 			);
 			path = "Cloud Player";
 			sourceTree = "<group>";
@@ -190,6 +186,58 @@
 			path = "Cloud PlayerUITests";
 			sourceTree = "<group>";
 		};
+		4F5433CB1D8730D900495C32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FAE87681D7EA67600456AE5 /* LoginViewController.swift */,
+				4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */,
+				4FAE876C1D7EA9C600456AE5 /* SongsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4F5433CC1D8730F200495C32 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4F5433CD1D87310100495C32 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4F5433CE1D87311900495C32 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				4FAE87641D7EA27000456AE5 /* APIConstants.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		4F5433CF1D87314200495C32 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */,
+				4FBB46331D7DEFB8000D3F2F /* Favorites.storyboard */,
+				4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */,
+				4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */,
+				4F1CBBAF1D7D98D800C1FF1D /* Main.storyboard */,
+				4F1CBBB41D7D98D900C1FF1D /* LaunchScreen.storyboard */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		4F5433D01D87319000495C32 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		4FAE875F1D7EA09A00456AE5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,7 +247,7 @@
 				4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */,
 				4F1CBBB71D7D98D900C1FF1D /* Info-SAMPLE.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -654,7 +702,7 @@
 			baseConfigurationReference = 30A3F2E22077B1B04CF75175 /* Pods-Cloud Player.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-Player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -666,7 +714,7 @@
 			baseConfigurationReference = 209A4A5BDDB060585E4DB08A /* Pods-Cloud Player.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-Player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
