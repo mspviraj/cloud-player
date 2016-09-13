@@ -14,6 +14,9 @@
 		4F1CBBC11D7D98D900C1FF1D /* Cloud_PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBC01D7D98D900C1FF1D /* Cloud_PlayerTests.swift */; };
 		4F1CBBCC1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */; };
 		4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5433D21D8735ED00495C32 /* LoginViewModel.swift */; };
+		4F877B571D8829C7008E7DCF /* DropboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F877B561D8829C7008E7DCF /* DropboxManager.swift */; };
+		4F877B591D8829E2008E7DCF /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F877B581D8829E2008E7DCF /* SongsViewModel.swift */; };
+		4F877B5B1D882CE4008E7DCF /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F877B5A1D882CE4008E7DCF /* Song.swift */; };
 		4FAE875E1D7EA08400456AE5 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE875D1D7EA08400456AE5 /* API.plist */; };
 		4FAE87611D7EA0B200456AE5 /* API-SAMPLE.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */; };
 		4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE87641D7EA27000456AE5 /* APIConstants.swift */; };
@@ -65,6 +68,9 @@
 		4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud_PlayerUITests.swift; sourceTree = "<group>"; };
 		4F1CBBCD1D7D98D900C1FF1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F5433D21D8735ED00495C32 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4F877B561D8829C7008E7DCF /* DropboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxManager.swift; sourceTree = "<group>"; };
+		4F877B581D8829E2008E7DCF /* SongsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
+		4F877B5A1D882CE4008E7DCF /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		4FAE875D1D7EA08400456AE5 /* API.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API-SAMPLE.plist"; sourceTree = "<group>"; };
 		4FAE87641D7EA27000456AE5 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -192,8 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				4FAE87681D7EA67600456AE5 /* LoginViewController.swift */,
-				4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */,
 				4FAE876C1D7EA9C600456AE5 /* SongsViewController.swift */,
+				4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +207,7 @@
 		4F5433CC1D8730F200495C32 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4F877B5A1D882CE4008E7DCF /* Song.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				4F5433D21D8735ED00495C32 /* LoginViewModel.swift */,
+				4F877B581D8829E2008E7DCF /* SongsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 		4F5433D01D87319000495C32 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				4F877B561D8829C7008E7DCF /* DropboxManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -524,11 +533,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F877B5B1D882CE4008E7DCF /* Song.swift in Sources */,
 				4FAE87691D7EA67600456AE5 /* LoginViewController.swift in Sources */,
 				4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */,
 				4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */,
 				4FAE876D1D7EA9C600456AE5 /* SongsViewController.swift in Sources */,
 				4F1CBBAA1D7D98D800C1FF1D /* AppDelegate.swift in Sources */,
+				4F877B591D8829E2008E7DCF /* SongsViewModel.swift in Sources */,
+				4F877B571D8829C7008E7DCF /* DropboxManager.swift in Sources */,
 				4FAE876B1D7EA78400456AE5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
