@@ -13,6 +13,7 @@
 		4F1CBBB61D7D98D900C1FF1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1CBBB41D7D98D900C1FF1D /* LaunchScreen.storyboard */; };
 		4F1CBBC11D7D98D900C1FF1D /* Cloud_PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBC01D7D98D900C1FF1D /* Cloud_PlayerTests.swift */; };
 		4F1CBBCC1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */; };
+		4F5418CA1D8886B60027E193 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5418C91D8886B60027E193 /* UIViewControllerExtension.swift */; };
 		4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5433D21D8735ED00495C32 /* LoginViewModel.swift */; };
 		4F877B571D8829C7008E7DCF /* DropboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F877B561D8829C7008E7DCF /* DropboxManager.swift */; };
 		4F877B591D8829E2008E7DCF /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F877B581D8829E2008E7DCF /* SongsViewModel.swift */; };
@@ -67,6 +68,7 @@
 		4F1CBBC71D7D98D900C1FF1D /* Cloud PlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cloud PlayerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud_PlayerUITests.swift; sourceTree = "<group>"; };
 		4F1CBBCD1D7D98D900C1FF1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F5418C91D8886B60027E193 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		4F5433D21D8735ED00495C32 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F877B561D8829C7008E7DCF /* DropboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxManager.swift; sourceTree = "<group>"; };
 		4F877B581D8829E2008E7DCF /* SongsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		4F1CBBA81D7D98D800C1FF1D /* Cloud Player */ = {
 			isa = PBXGroup;
 			children = (
+				4F5418C81D88869F0027E193 /* Extensions */,
 				4FAE875F1D7EA09A00456AE5 /* Supporting Files */,
 				4F5433D01D87319000495C32 /* Managers */,
 				4F5433CE1D87311900495C32 /* Stores */,
@@ -192,6 +195,14 @@
 				4F1CBBCD1D7D98D900C1FF1D /* Info.plist */,
 			);
 			path = "Cloud PlayerUITests";
+			sourceTree = "<group>";
+		};
+		4F5418C81D88869F0027E193 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4F5418C91D8886B60027E193 /* UIViewControllerExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		4F5433CB1D8730D900495C32 /* Views */ = {
@@ -535,6 +546,7 @@
 			files = (
 				4F877B5B1D882CE4008E7DCF /* Song.swift in Sources */,
 				4FAE87691D7EA67600456AE5 /* LoginViewController.swift in Sources */,
+				4F5418CA1D8886B60027E193 /* UIViewControllerExtension.swift in Sources */,
 				4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */,
 				4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */,
 				4FAE876D1D7EA9C600456AE5 /* SongsViewController.swift in Sources */,

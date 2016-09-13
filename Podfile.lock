@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.3.1)
+  - MBProgressHUD (1.0.0)
   - RxCocoa (2.6.0):
     - RxSwift (~> 2.5)
   - RxSwift (2.6.0)
@@ -7,16 +8,18 @@ PODS:
     - Alamofire (~> 3.3.1)
 
 DEPENDENCIES:
+  - MBProgressHUD (~> 1.0.0)
   - RxCocoa (~> 2.6)
   - RxSwift (~> 2.6)
   - SwiftyDropbox
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   SwiftyDropbox: fba9da0b1b72ae51edfeb1ee2a13aaef852ea6d7
 
-PODFILE CHECKSUM: ddde0eecf2539a7227a1a32936039c980e6ea748
+PODFILE CHECKSUM: 0def691d7b4794476fbef069b086a031e00d573c
 
 COCOAPODS: 1.0.1

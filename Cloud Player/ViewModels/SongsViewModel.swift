@@ -35,7 +35,6 @@ class SongsViewModel {
     func syncSongsFromDropbox() {
         dropboxManager.getSongs { (songs) in
             self.songsSubject.onNext(songs)
-            self.songsSubject.onCompleted()
         }
     }
 }

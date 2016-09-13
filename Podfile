@@ -6,6 +6,7 @@ target 'Cloud Player' do
   use_frameworks!
 
   # Pods for Cloud Player
+  pod 'MBProgressHUD', '~> 1.0.0'
   pod 'RxSwift',    '~> 2.6'
   pod 'RxCocoa',    '~> 2.6'
   pod 'SwiftyDropbox'

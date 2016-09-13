@@ -49,9 +49,12 @@
                             <constraint firstItem="8xb-RR-alY" firstAttribute="top" secondItem="6Hb-nw-ALR" secondAttribute="bottom" id="yVu-OL-WLM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Songs" id="hYa-QA-wVd"/>
+                    <navigationItem key="navigationItem" title="Songs" id="hYa-QA-wVd">
+                        <barButtonItem key="rightBarButtonItem" title="Sync" id="Sfe-Ec-9c4"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="songsTableView" destination="6Hb-nw-ALR" id="mHK-Fg-eud"/>
+                        <outlet property="syncButton" destination="Sfe-Ec-9c4" id="dVC-mp-VAv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Kd-XD-7X2" userLabel="First Responder" sceneMemberID="firstResponder"/>

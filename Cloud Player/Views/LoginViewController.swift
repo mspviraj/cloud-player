@@ -26,7 +26,17 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        initializeBindings()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.authorizeClient()
+    }
+    
+    // MARK: - Private methods
+    
+    private func initializeBindings() {
         loginButton.rx_tap
             .map { [unowned self] _ in
                 return self
@@ -43,10 +53,5 @@ class LoginViewController: UIViewController {
                 self.performSegueWithIdentifier("TabBarControllerSegue", sender: nil)
             }
             .addDisposableTo(disposeBag)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel.authorizeClient()
     }
 }
