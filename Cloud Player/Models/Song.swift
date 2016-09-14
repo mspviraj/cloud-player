@@ -13,7 +13,7 @@ class Song: Object {
     
     // MARK: - Properties
     
-    dynamic var id: Int = 0
+    dynamic var id: String = NSUUID().UUIDString
     dynamic var name: String = ""
     dynamic var dropboxPath: String = ""
     

@@ -27,7 +27,16 @@ class DatabaseManager {
         return .Success
     }
     
-    func removeSongs(song: Song) -> DatabaseResult {
+    func updateSong(song: Song) -> DatabaseResult {
+        if songAlreadyExists(song) == false { return .Failure }
+        let realm = try! Realm()
+        try! realm.write({
+            realm.add(song, update: true)
+        })
+        return .Success
+    }
+    
+    func removeSong(song: Song) -> DatabaseResult {
         if songAlreadyExists(song) == false { return .Failure }
         let realm = try! Realm()
         try! realm.write({ 

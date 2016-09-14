@@ -22,7 +22,7 @@ class SongsTableViewCell: UITableViewCell {
         didSet {
             songLabel.text = song.name
             artistLabel.text = song.dropboxPath
-            getThumbnail()
+            // getThumbnail()
         }
     }
     

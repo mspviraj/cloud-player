@@ -7,6 +7,59 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Sync-->
+        <scene sceneID="hF7-iW-XkS">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="a7f-2x-mLq" customClass="SyncViewController" customModule="Cloud_Player" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C0q-Sb-PaR"/>
+                        <viewControllerLayoutGuide type="bottom" id="hsO-vE-HJo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="feU-gS-coS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ily-6h-ljQ">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SyncTableViewCell" textLabel="fiW-Ki-M5D" style="IBUITableViewCellStyleDefault" id="vHv-G3-Etn">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHv-G3-Etn" id="3JI-tc-KrZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fiW-Ki-M5D">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ily-6h-ljQ" secondAttribute="trailing" id="QVk-8O-i21"/>
+                            <constraint firstItem="hsO-vE-HJo" firstAttribute="top" secondItem="Ily-6h-ljQ" secondAttribute="bottom" id="Ro3-Tv-Glk"/>
+                            <constraint firstItem="Ily-6h-ljQ" firstAttribute="leading" secondItem="feU-gS-coS" secondAttribute="leading" id="Uy2-ra-1Bh"/>
+                            <constraint firstItem="Ily-6h-ljQ" firstAttribute="top" secondItem="C0q-Sb-PaR" secondAttribute="bottom" id="x2z-FS-G2K"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sync" id="fKU-E8-iZJ"/>
+                    <connections>
+                        <outlet property="songsTableView" destination="Ily-6h-ljQ" id="Ovz-pF-Psa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLr-Uo-1la" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2834" y="176"/>
+        </scene>
         <!--Songs-->
         <scene sceneID="f6V-yE-iw8">
             <objects>
@@ -48,13 +101,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9G-yw-Yjm">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAl-06-9cA">
                                                             <rect key="frame" x="0.0" y="22" width="40" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -87,7 +140,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Songs" id="hYa-QA-wVd">
-                        <barButtonItem key="rightBarButtonItem" title="Sync" id="Sfe-Ec-9c4"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sync" id="Sfe-Ec-9c4">
+                            <connections>
+                                <segue destination="a7f-2x-mLq" kind="show" id="rmE-Na-EmD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="songsTableView" destination="6Hb-nw-ALR" id="mHK-Fg-eud"/>

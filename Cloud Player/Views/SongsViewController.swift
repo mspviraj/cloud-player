@@ -27,18 +27,22 @@ class SongsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeBindings()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         initializeData()
     }
     
     // MARK: - Private methods
     
     private func initializeBindings() {
-        syncButton.rx_tap
+        /*syncButton.rx_tap
             .subscribeNext { [unowned self] (_) in
                 // TODO: Remove initializing data and add call for SyncViewController
                 self.initializeData()
             }
-            .addDisposableTo(disposeBag)
+            .addDisposableTo(disposeBag)*/
         
         viewModel.songsObservable
             .bindTo(songsTableView.rx_itemsWithCellIdentifier("SongsTableViewCell", cellType: SongsTableViewCell.self))
