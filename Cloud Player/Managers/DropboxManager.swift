@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import SwiftyDropbox
 
 class DropboxManager {
@@ -18,8 +19,8 @@ class DropboxManager {
     
     // MARK: - Lifecycle
     
-    init(client: DropboxClient) {
-        self.client = client
+    init() {
+        client = Dropbox.authorizedClient
     }
     
     // MARK: - Public methods
@@ -30,10 +31,35 @@ class DropboxManager {
             .response { (response, error) in
                 if let result = response {
                     let songs = result.matches
-                        .map { Song(name: $0.metadata.name, path: $0.metadata.pathLower!) }
+                        .map {
+                            Song(name: $0.metadata.name, dropboxPath: $0.metadata.pathLower!)
+                        }
                     completionHandler(songs)
                 } else {
                     completionHandler([])
+                }
+        }
+    }
+    
+    func getThumbnail(path: String, completionHandler: (data: NSData!) -> ()) {
+        client.files
+            .download(path: path)
+            .response { (response, error) in
+                if let (metadata, value) = response {
+                    
+                    let directory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
+                    let filename = NSURL(fileURLWithPath: directory!).URLByAppendingPathComponent(metadata.name)
+                    
+                    print(value.writeToURL(filename, atomically: true))
+                    
+                    let playerItem = AVPlayerItem(URL: filename)
+                    let _ = playerItem.asset.commonMetadata.map {
+                        if $0.commonKey == "artwork" {
+                            if $0.dataValue != nil {
+                                completionHandler(data: $0.dataValue)
+                            }
+                        }
+                    }
                 }
             }
     }

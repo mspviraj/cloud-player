@@ -27,33 +27,38 @@ class SongsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeBindings()
+        initializeData()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        showSpinner()
-    }
-    
-    // MARK: - Private Methods
+    // MARK: - Private methods
     
     private func initializeBindings() {
         syncButton.rx_tap
             .subscribeNext { [unowned self] (_) in
-                self.showSpinner()
-                self.viewModel.syncSongsFromDropbox()
+                // TODO: Remove initializing data and add call for SyncViewController
+                self.initializeData()
             }
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .bindTo(songsTableView.rx_itemsWithCellIdentifier("SongsTableViewCell")) { (row, element, cell) in
-                cell.textLabel?.text = element.name
+            .bindTo(songsTableView.rx_itemsWithCellIdentifier("SongsTableViewCell", cellType: SongsTableViewCell.self))
+            { (row, element, cell) in
+                cell.song = element
             }
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .subscribeNext { [unowned self] (_) in
+            .subscribeNext { [unowned self] (songs) in
                 self.hideSpinner()
+                if songs.isEmpty == true {
+                    print("No songs. Need to sync!")
+                }
             }
             .addDisposableTo(disposeBag)
+    }
+    
+    private func initializeData() {
+        showSpinner()
+        viewModel.getSongs()
     }
 }

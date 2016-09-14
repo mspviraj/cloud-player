@@ -7,14 +7,35 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Song {
+class Song: Object {
     
-    let name: String
-    let path: String
+    // MARK: - Properties
     
-    init(name: String, path: String) {
+    dynamic var id: Int = 0
+    dynamic var name: String = ""
+    dynamic var dropboxPath: String = ""
+    
+    dynamic var filePath: String? = nil
+    let size: RealmOptional<Int> = RealmOptional<Int>()
+    
+    dynamic var track: String? = nil
+    dynamic var artist: String? = nil
+    let duration: RealmOptional<Int> = RealmOptional<Int>()
+    // TODO: Add albumArt
+    
+    // MARK: - Lifecycle
+    
+    required convenience init(name: String, dropboxPath: String) {
+        self.init()
         self.name = name
-        self.path = path
+        self.dropboxPath = dropboxPath
+    }
+    
+    // MARK: - Database rules
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
 }

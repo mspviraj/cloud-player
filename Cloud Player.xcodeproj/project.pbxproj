@@ -14,6 +14,7 @@
 		4F1CBBC11D7D98D900C1FF1D /* Cloud_PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBC01D7D98D900C1FF1D /* Cloud_PlayerTests.swift */; };
 		4F1CBBCC1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */; };
 		4F5418CA1D8886B60027E193 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5418C91D8886B60027E193 /* UIViewControllerExtension.swift */; };
+		4F5418CC1D888F5C0027E193 /* SongsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5418CB1D888F5C0027E193 /* SongsTableViewCell.swift */; };
 		4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5433D21D8735ED00495C32 /* LoginViewModel.swift */; };
 		4F877B571D8829C7008E7DCF /* DropboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F877B561D8829C7008E7DCF /* DropboxManager.swift */; };
 		4F877B591D8829E2008E7DCF /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F877B581D8829E2008E7DCF /* SongsViewModel.swift */; };
@@ -24,6 +25,9 @@
 		4FAE87691D7EA67600456AE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE87681D7EA67600456AE5 /* LoginViewController.swift */; };
 		4FAE876B1D7EA78400456AE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */; };
 		4FAE876D1D7EA9C600456AE5 /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE876C1D7EA9C600456AE5 /* SongsViewController.swift */; };
+		4FAF17D01D89DCF500E6B7BD /* SyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF17CF1D89DCF500E6B7BD /* SyncViewModel.swift */; };
+		4FAF17D21D89DD2D00E6B7BD /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF17D11D89DD2D00E6B7BD /* SyncViewController.swift */; };
+		4FAF17D41D89DFA000E6B7BD /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF17D31D89DFA000E6B7BD /* DatabaseManager.swift */; };
 		4FBB462C1D7DEED6000D3F2F /* Songs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */; };
 		4FBB462F1D7DEEE5000D3F2F /* Playlists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */; };
 		4FBB46321D7DEF5C000D3F2F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */; };
@@ -69,6 +73,7 @@
 		4F1CBBCB1D7D98D900C1FF1D /* Cloud_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud_PlayerUITests.swift; sourceTree = "<group>"; };
 		4F1CBBCD1D7D98D900C1FF1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F5418C91D8886B60027E193 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		4F5418CB1D888F5C0027E193 /* SongsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableViewCell.swift; sourceTree = "<group>"; };
 		4F5433D21D8735ED00495C32 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F877B561D8829C7008E7DCF /* DropboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxManager.swift; sourceTree = "<group>"; };
 		4F877B581D8829E2008E7DCF /* SongsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -80,6 +85,9 @@
 		4FAE87681D7EA67600456AE5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4FAE876C1D7EA9C600456AE5 /* SongsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsViewController.swift; sourceTree = "<group>"; };
+		4FAF17CF1D89DCF500E6B7BD /* SyncViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewModel.swift; sourceTree = "<group>"; };
+		4FAF17D11D89DD2D00E6B7BD /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
+		4FAF17D31D89DFA000E6B7BD /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		4FBB462B1D7DEED6000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Songs.storyboard; sourceTree = "<group>"; };
 		4FBB462E1D7DEEE5000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Playlists.storyboard; sourceTree = "<group>"; };
 		4FBB46311D7DEF5C000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -173,7 +181,6 @@
 				4F5433CC1D8730F200495C32 /* Models */,
 				4F5433CD1D87310100495C32 /* ViewModels */,
 				4F5433CB1D8730D900495C32 /* Views */,
-				4F5433CF1D87314200495C32 /* User Interface */,
 				4F1CBBB21D7D98D900C1FF1D /* Assets.xcassets */,
 			);
 			path = "Cloud Player";
@@ -202,15 +209,18 @@
 			children = (
 				4F5418C91D8886B60027E193 /* UIViewControllerExtension.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4F5433CB1D8730D900495C32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				4FAE87681D7EA67600456AE5 /* LoginViewController.swift */,
+				4FAF17D11D89DD2D00E6B7BD /* SyncViewController.swift */,
 				4FAE876C1D7EA9C600456AE5 /* SongsViewController.swift */,
+				4F5418CB1D888F5C0027E193 /* SongsTableViewCell.swift */,
 				4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */,
+				4F5433CF1D87314200495C32 /* User Interface */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				4F5433D21D8735ED00495C32 /* LoginViewModel.swift */,
+				4FAF17CF1D89DCF500E6B7BD /* SyncViewModel.swift */,
 				4F877B581D8829E2008E7DCF /* SongsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -251,12 +262,14 @@
 				4F1CBBB41D7D98D900C1FF1D /* LaunchScreen.storyboard */,
 			);
 			name = "User Interface";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		4F5433D01D87319000495C32 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				4F877B561D8829C7008E7DCF /* DropboxManager.swift */,
+				4FAF17D31D89DFA000E6B7BD /* DatabaseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -549,11 +562,15 @@
 				4F5418CA1D8886B60027E193 /* UIViewControllerExtension.swift in Sources */,
 				4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */,
 				4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */,
+				4FAF17D21D89DD2D00E6B7BD /* SyncViewController.swift in Sources */,
+				4FAF17D41D89DFA000E6B7BD /* DatabaseManager.swift in Sources */,
 				4FAE876D1D7EA9C600456AE5 /* SongsViewController.swift in Sources */,
+				4F5418CC1D888F5C0027E193 /* SongsTableViewCell.swift in Sources */,
 				4F1CBBAA1D7D98D800C1FF1D /* AppDelegate.swift in Sources */,
 				4F877B591D8829E2008E7DCF /* SongsViewModel.swift in Sources */,
 				4F877B571D8829C7008E7DCF /* DropboxManager.swift in Sources */,
 				4FAE876B1D7EA78400456AE5 /* SettingsViewController.swift in Sources */,
+				4FAF17D01D89DCF500E6B7BD /* SyncViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

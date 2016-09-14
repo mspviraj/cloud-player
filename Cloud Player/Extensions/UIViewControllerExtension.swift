@@ -11,6 +11,8 @@ import MBProgressHUD
 
 extension UIViewController {
     
+    // MARK: - Spinner
+    
     func showSpinner() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
@@ -18,7 +20,6 @@ extension UIViewController {
     func showSpinnerWithText(text: String) {
         let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         spinner.label.text = text
-        
     }
     
     func hideSpinner() {

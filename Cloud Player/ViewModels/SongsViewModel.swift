@@ -14,7 +14,7 @@ class SongsViewModel {
     
     // MARK: - Properties
     
-    private let dropboxManager = DropboxManager(client: Dropbox.authorizedClient!)
+    private let databaseManager = DatabaseManager()
     private let songsSubject = PublishSubject<[Song]>()
     private let disposeBag = DisposeBag()
     
@@ -25,16 +25,11 @@ class SongsViewModel {
     init() {
         songsObservable = songsSubject.asObservable()
             .map { $0 }
-        
-        // Temporary (in future songs info will be stored in database)
-        syncSongsFromDropbox()
     }
     
     // MARK: - Methods
     
-    func syncSongsFromDropbox() {
-        dropboxManager.getSongs { (songs) in
-            self.songsSubject.onNext(songs)
-        }
+    func getSongs() {
+        songsSubject.onNext(databaseManager.getSongs())
     }
 }

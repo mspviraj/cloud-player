@@ -9,6 +9,7 @@ target 'Cloud Player' do
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'RxSwift',    '~> 2.6'
   pod 'RxCocoa',    '~> 2.6'
+  pod 'RealmSwift'
   pod 'SwiftyDropbox'
 
   target 'Cloud PlayerTests' do
