@@ -7,8 +7,9 @@ target 'Cloud Player' do
 
   # Pods for Cloud Player
   pod 'MBProgressHUD', '~> 1.0.0'
-  pod 'RxSwift',    '~> 2.6'
-  pod 'RxCocoa',    '~> 2.6'
+  pod 'M13Checkbox'
+  pod 'RxSwift',       '~> 2.6'
+  pod 'RxCocoa',       '~> 2.6'
   pod 'RealmSwift'
   pod 'SwiftyDropbox'
 

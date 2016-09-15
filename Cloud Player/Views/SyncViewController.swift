@@ -32,9 +32,17 @@ class SyncViewController: UIViewController {
     // MARK: - Private methods
     
     private func initializeBindings() {
+        songsTableView.rx_itemSelected
+            .subscribeNext({ [unowned self] (indexPath) in
+                let cell = self.songsTableView.cellForRowAtIndexPath(indexPath) as! SyncTableViewCell
+                cell.changeState()
+            })
+            .addDisposableTo(disposeBag)
+        
         viewModel.songsObservable.asObservable()
-            .bindTo(songsTableView.rx_itemsWithCellIdentifier("SyncTableViewCell")) { (row, element, cell) in
-                cell.textLabel?.text = element.name
+            .bindTo(songsTableView.rx_itemsWithCellIdentifier("SyncTableViewCell", cellType: SyncTableViewCell.self))
+            { (row, element, cell) in
+                cell.song = element
             }
             .addDisposableTo(disposeBag)
         

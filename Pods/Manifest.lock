@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.3.1)
+  - M13Checkbox (2.1.2)
   - MBProgressHUD (1.0.0)
   - Realm (1.0.2):
     - Realm/Headers (= 1.0.2)
@@ -13,6 +14,7 @@ PODS:
     - Alamofire (~> 3.3.1)
 
 DEPENDENCIES:
+  - M13Checkbox
   - MBProgressHUD (~> 1.0.0)
   - RealmSwift
   - RxCocoa (~> 2.6)
@@ -21,6 +23,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  M13Checkbox: fbc53145e3ca8ecd1c444a76439bdc0ddb17b008
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
@@ -28,6 +31,6 @@ SPEC CHECKSUMS:
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   SwiftyDropbox: fba9da0b1b72ae51edfeb1ee2a13aaef852ea6d7
 
-PODFILE CHECKSUM: 29a82854f0a3e199a7e297b1d08a3839e6240ece
+PODFILE CHECKSUM: ffbf1bebcf74c6fccefe136374f743e5cc33871b
 
 COCOAPODS: 1.0.1
