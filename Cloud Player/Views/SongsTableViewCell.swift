@@ -15,25 +15,27 @@ class SongsTableViewCell: UITableViewCell {
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var albumLabel: UILabel!
     
     // MARK: - Properties
     
     var song: Song! {
         didSet {
             songLabel.text = song.name
-            artistLabel.text = song.dropboxPath
-            // getThumbnail()
+            artistLabel.text = song.artist ?? "Unknown artist"
+            albumLabel.text = song.album ?? "Unknown album"
+            setAlbumImage()
         }
     }
     
     // MARK: - Methods
     
-    private func getThumbnail() {
-        let dropboxManager = DropboxManager()
-        dropboxManager.getThumbnail(song.dropboxPath) { (data) in
-            if data != nil {
-                self.albumImageView.image = UIImage(data: data)
-            }
+    private func setAlbumImage() {
+        if let albumArt = song.albumArt {
+            albumImageView.image = UIImage(data: albumArt)
+        } else {
+            // TODO: Add sample image
+            albumImageView.image = UIImage()
         }
     }
 }

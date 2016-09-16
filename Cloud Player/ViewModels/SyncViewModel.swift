@@ -101,6 +101,7 @@ class SyncViewModel {
             if let (song, data) = response {
                 if let path = self.fileManager.saveFile(song.name, data: data) {
                     song.filePath = path
+                    song.updateMetadata()
                     self.databaseManager.addSong(song)
                 }
             }

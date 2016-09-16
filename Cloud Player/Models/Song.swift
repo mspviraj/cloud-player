@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import SwiftyDropbox
+import AVFoundation
 
 class Song: Object {
     
@@ -24,8 +25,9 @@ class Song: Object {
     
     dynamic var track: String? = nil
     dynamic var artist: String? = nil
+    dynamic var album: String? = nil
+    dynamic var albumArt: NSData? = nil
     let duration: RealmOptional<Int> = RealmOptional<Int>()
-    // TODO: Add albumArt
     
     var state: ActionState = .NoAction
     
@@ -61,6 +63,24 @@ class Song: Object {
     
     func isOnDevice() -> Bool {
         return filePath != nil
+    }
+    
+    func updateMetadata() {
+        let asset = AVAsset(URL: NSURL(fileURLWithPath: filePath!))
+        for metadata in asset.commonMetadata {
+            switch metadata.commonKey! {
+            case "title":
+                track = metadata.stringValue!
+            case "artist":
+                artist = metadata.stringValue!
+            case "albumName":
+                album = metadata.stringValue!
+            case "artwork":
+                albumArt = metadata.dataValue
+            default:
+                break
+            }
+        }
     }
     
     // MARK: - Private methods
