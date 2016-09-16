@@ -8,8 +8,6 @@
 
 import UIKit
 import M13Checkbox
-import RxSwift
-import RxCocoa
 
 class SyncTableViewCell: UITableViewCell {
     
@@ -33,13 +31,15 @@ class SyncTableViewCell: UITableViewCell {
     func changeState() {
         switch checkbox.checkState {
         case .Checked:
-            if song.filePath != nil {
+            if song.isOnDevice() == true {
+                song.changeActionState(.PendingToRemoval)
                 checkbox.setCheckState(.Mixed, animated: true)
                 statusLabel.text = "Pending to remove from device"
             } else {
                 setInitialStatus(animated: true)
             }
         case .Unchecked:
+            song.changeActionState(.PendingToDownload)
             checkbox.setCheckState(.Checked, animated: true)
             statusLabel.text = "Pending to download to device"
         case .Mixed:
@@ -50,7 +50,8 @@ class SyncTableViewCell: UITableViewCell {
     // MARK: - Private methods
     
     private func setInitialStatus(animated animated: Bool) {
-        if song.filePath != nil {
+        song.changeActionState(.NoAction)
+        if song.isOnDevice() == true {
             checkbox.setCheckState(.Checked, animated: animated)
             statusLabel.text = "Device storage"
         } else {

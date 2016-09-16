@@ -41,6 +41,19 @@ class DropboxManager {
         }
     }
     
+    func downloadSong(path: String, completionHandler: (Song, NSData)! -> ()) {
+        client.files
+            .download(path: path)
+            .response { (response, error) in
+                if let (metadata, value) = response {
+                    let song = Song(metadata: metadata)
+                    completionHandler((song, value))
+                } else {
+                    completionHandler(nil)
+                }
+            }
+    }
+    
     func getThumbnail(path: String, completionHandler: (data: NSData!) -> ()) {
         client.files
             .download(path: path)

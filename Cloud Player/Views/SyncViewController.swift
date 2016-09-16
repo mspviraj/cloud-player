@@ -14,6 +14,7 @@ class SyncViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var applyChangesButton: UIBarButtonItem!
     @IBOutlet weak var songsTableView: UITableView!
     
     // MARK: - Properties
@@ -32,6 +33,13 @@ class SyncViewController: UIViewController {
     // MARK: - Private methods
     
     private func initializeBindings() {
+        applyChangesButton.rx_tap
+            .subscribeNext { [unowned self] (_) in
+                self.showSpinner()
+                self.viewModel.syncSongs()
+            }
+            .addDisposableTo(disposeBag)
+        
         songsTableView.rx_itemSelected
             .subscribeNext({ [unowned self] (indexPath) in
                 let cell = self.songsTableView.cellForRowAtIndexPath(indexPath) as! SyncTableViewCell
@@ -51,7 +59,16 @@ class SyncViewController: UIViewController {
                 self.hideSpinner()
                 if songs.count == 0 {
                     print("No songs in Dropbox storage.")
+                } else {
+                    self.viewModel.addSongs(songs)
                 }
+            }
+            .addDisposableTo(disposeBag)
+        
+        viewModel.syncObservable.asObservable()
+            .subscribeNext { [unowned self] (_) in
+                self.hideSpinner()
+                self.navigationController?.popViewControllerAnimated(true)
             }
             .addDisposableTo(disposeBag)
     }
