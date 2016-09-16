@@ -47,6 +47,9 @@ class Song: Object {
         self.dropboxPath = metadata.pathLower!
         self.dropboxId = metadata.id
         self.size.value = Int(metadata.size)
+        self.track = metadata.name
+        self.artist = "Unknown artist"
+        self.album = "Unknown album"
     }
     
     // MARK: - Database rules

@@ -14,6 +14,7 @@ class SongsViewModel {
     // MARK: - Properties
     
     private let databaseManager = DatabaseManager()
+    private let fileManager = FileManager()
     private let songsSubject = PublishSubject<[Song]>()
     private let disposeBag = DisposeBag()
     
@@ -29,6 +30,14 @@ class SongsViewModel {
     // MARK: - Methods
     
     func getSongs() {
-        songsSubject.onNext(databaseManager.getSongs())
+        let songs = databaseManager.getSongs()
+            .filter {
+                let fileExists = fileManager.fileExists($0)
+                if fileExists == false {
+                    databaseManager.removeSong($0)
+                }
+                return fileExists
+            }
+        songsSubject.onNext(songs)
     }
 }

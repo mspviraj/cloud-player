@@ -22,8 +22,8 @@ class SongsTableViewCell: UITableViewCell {
     var song: Song! {
         didSet {
             songLabel.text = song.name
-            artistLabel.text = song.artist ?? "Unknown artist"
-            albumLabel.text = song.album ?? "Unknown album"
+            artistLabel.text = song.artist
+            albumLabel.text = song.album
             setAlbumImage()
         }
     }

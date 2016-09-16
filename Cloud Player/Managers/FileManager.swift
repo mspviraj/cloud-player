@@ -21,7 +21,7 @@ class FileManager {
         let rootDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
                                                                     .UserDomainMask, true).first! as NSString
         let directoryPath = rootDirectoryPath.stringByAppendingPathComponent(directoryName) as NSString
-        if isMainDirectoryCreated(directoryPath as String) == false {
+        if isDirectoryCreated(directoryPath as String) == false {
             createMainDirectory(directoryPath as String)
         }
         
@@ -34,6 +34,10 @@ class FileManager {
     }
     
     func removeFile(path: String) -> Bool {
+        if fileManager.fileExistsAtPath(path) == false {
+            return true
+        }
+        
         do {
             try fileManager.removeItemAtPath(path)
             return true
@@ -43,9 +47,13 @@ class FileManager {
         }
     }
     
+    func fileExists(song: Song) -> Bool {
+        return fileManager.fileExistsAtPath(song.filePath!)
+    }
+    
     // MARK: - Private methods
     
-    func createMainDirectory(path: String) {
+    private func createMainDirectory(path: String) {
         do {
             try fileManager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
         } catch let error as NSError {
@@ -53,7 +61,7 @@ class FileManager {
         }
     }
     
-    func isMainDirectoryCreated(path: String) -> Bool {
+    private func isDirectoryCreated(path: String) -> Bool {
         var isDirectory : ObjCBool = false
         let fileExists = fileManager.fileExistsAtPath(path, isDirectory: &isDirectory)
         return fileExists && isDirectory
