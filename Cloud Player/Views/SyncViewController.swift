@@ -40,11 +40,13 @@ class SyncViewController: UIViewController {
             }
             .addDisposableTo(disposeBag)
         
+        songsTableView.rx_setDelegate(self)
+        
         songsTableView.rx_itemSelected
             .subscribeNext({ [unowned self] (indexPath) in
                 let cell = self.songsTableView.cellForRowAtIndexPath(indexPath) as! SyncTableViewCell
                 cell.changeState()
-            })
+                })
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable.asObservable()
@@ -76,5 +78,12 @@ class SyncViewController: UIViewController {
     private func initializeData() {
         showSpinner()
         viewModel.getSongs()
+    }
+}
+
+extension SyncViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.None
     }
 }

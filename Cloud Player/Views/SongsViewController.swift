@@ -37,12 +37,16 @@ class SongsViewController: UIViewController {
     // MARK: - Private methods
     
     private func initializeBindings() {
-        /*syncButton.rx_tap
-            .subscribeNext { [unowned self] (_) in
-                // TODO: Remove initializing data and add call for SyncViewController
-                self.initializeData()
+        songsTableView.rx_setDelegate(self)
+        
+        songsTableView.rx_modelSelected(Song.self)
+            .subscribeNext { [unowned self] (song) in
+                let indexPath = self.songsTableView.indexPathForSelectedRow!
+                self.songsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+                print(song.name)
+                // TODO: Open player
             }
-            .addDisposableTo(disposeBag)*/
+            .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
             .bindTo(songsTableView.rx_itemsWithCellIdentifier("SongsTableViewCell", cellType: SongsTableViewCell.self))
@@ -64,5 +68,12 @@ class SongsViewController: UIViewController {
     private func initializeData() {
         showSpinner()
         viewModel.getSongs()
+    }
+}
+
+extension SongsViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.None
     }
 }
