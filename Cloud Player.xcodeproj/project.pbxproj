@@ -35,6 +35,8 @@
 		4FBB462F1D7DEEE5000D3F2F /* Playlists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */; };
 		4FBB46321D7DEF5C000D3F2F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */; };
 		4FBB46351D7DEFB8000D3F2F /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB46331D7DEFB8000D3F2F /* Favorites.storyboard */; };
+		4FED3ABB1D93138500762E43 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FED3AB91D93138500762E43 /* Player.storyboard */; };
+		4FED3ABD1D931F1000762E43 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FED3ABC1D931F1000762E43 /* PlayerViewController.swift */; };
 		877F6BC1EA9AABB1D641E41A /* Pods_Cloud_PlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC135DD4E0BB9860B4C1B457 /* Pods_Cloud_PlayerUITests.framework */; };
 		A50F970FBCD85E9C935DCD39 /* Pods_Cloud_Player.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E123DFB70CF3DD788DA98DD8 /* Pods_Cloud_Player.framework */; };
 		F710DD86D2DBA70C90B9ACFC /* Pods_Cloud_PlayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DAEF0793BB89C20F6E598B /* Pods_Cloud_PlayerTests.framework */; };
@@ -98,6 +100,8 @@
 		4FBB462E1D7DEEE5000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Playlists.storyboard; sourceTree = "<group>"; };
 		4FBB46311D7DEF5C000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		4FBB46341D7DEFB8000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Favorites.storyboard; sourceTree = "<group>"; };
+		4FED3ABA1D93138500762E43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Player.storyboard; sourceTree = "<group>"; };
+		4FED3ABC1D931F1000762E43 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		80DAEF0793BB89C20F6E598B /* Pods_Cloud_PlayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cloud_PlayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59319A77DE8BF2AAC5F4F6F /* Pods-Cloud PlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cloud PlayerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cloud PlayerTests/Pods-Cloud PlayerTests.release.xcconfig"; sourceTree = "<group>"; };
 		DC135DD4E0BB9860B4C1B457 /* Pods_Cloud_PlayerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cloud_PlayerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				4FAE87681D7EA67600456AE5 /* LoginViewController.swift */,
+				4FED3ABC1D931F1000762E43 /* PlayerViewController.swift */,
 				4FAF17D11D89DD2D00E6B7BD /* SyncViewController.swift */,
 				4FACA9A41D8ACDF000EAB476 /* SyncTableViewCell.swift */,
 				4FAE876C1D7EA9C600456AE5 /* SongsViewController.swift */,
@@ -262,6 +267,7 @@
 		4F5433CF1D87314200495C32 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				4FED3AB91D93138500762E43 /* Player.storyboard */,
 				4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */,
 				4FBB46331D7DEFB8000D3F2F /* Favorites.storyboard */,
 				4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */,
@@ -416,6 +422,7 @@
 				4FBB46351D7DEFB8000D3F2F /* Favorites.storyboard in Resources */,
 				4FAE87611D7EA0B200456AE5 /* API-SAMPLE.plist in Resources */,
 				4FAE875E1D7EA08400456AE5 /* API.plist in Resources */,
+				4FED3ABB1D93138500762E43 /* Player.storyboard in Resources */,
 				4F1CBBB31D7D98D900C1FF1D /* Assets.xcassets in Resources */,
 				4F1CBBB11D7D98D800C1FF1D /* Main.storyboard in Resources */,
 			);
@@ -570,6 +577,7 @@
 				4FAE87691D7EA67600456AE5 /* LoginViewController.swift in Sources */,
 				4F5418CA1D8886B60027E193 /* UIViewControllerExtension.swift in Sources */,
 				4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */,
+				4FED3ABD1D931F1000762E43 /* PlayerViewController.swift in Sources */,
 				4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */,
 				4FAF17D21D89DD2D00E6B7BD /* SyncViewController.swift in Sources */,
 				4FAF17D41D89DFA000E6B7BD /* DatabaseManager.swift in Sources */,
@@ -663,6 +671,14 @@
 				4FBB46341D7DEFB8000D3F2F /* Base */,
 			);
 			name = Favorites.storyboard;
+			sourceTree = "<group>";
+		};
+		4FED3AB91D93138500762E43 /* Player.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FED3ABA1D93138500762E43 /* Base */,
+			);
+			name = Player.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -14,8 +14,8 @@ class LoginViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var createAccountButton: UIButton!
     
     // MARK: - Properties
     

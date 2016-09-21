@@ -43,8 +43,11 @@ class SongsViewController: UIViewController {
             .subscribeNext { [unowned self] (song) in
                 let indexPath = self.songsTableView.indexPathForSelectedRow!
                 self.songsTableView.deselectRowAtIndexPath(indexPath, animated: true)
-                print(song.name)
-                // TODO: Open player
+                
+                let playerStoryboard = UIStoryboard(name: "Player", bundle: nil)
+                let playerViewController = playerStoryboard.instantiateInitialViewController() as! PlayerViewController
+                playerViewController.song = song
+                self.showViewController(playerViewController, sender: nil)
             }
             .addDisposableTo(disposeBag)
         
