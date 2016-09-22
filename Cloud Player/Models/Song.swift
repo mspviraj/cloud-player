@@ -29,7 +29,18 @@ class Song: Object {
     dynamic var albumArt: NSData? = nil
     let duration: RealmOptional<Int> = RealmOptional<Int>()
     
-    var state: ActionState = .NoAction
+    private dynamic var privateState: Int = ActionState.NoAction.rawValue
+    var state: ActionState {
+        get {
+            return ActionState(rawValue: privateState)!
+        }
+        set {
+            let realm = try! Realm()
+            try! realm.write({ 
+                privateState = newValue.rawValue
+            })
+        }
+    }
     
     // MARK: - Lifecycle
     
@@ -84,6 +95,37 @@ class Song: Object {
                 break
             }
         }
+    }
+    
+    func downloadFromDropbox(completion: (success: Bool) -> ()) {
+        let dropboxManager = DropboxManager()
+        dropboxManager.downloadSong(dropboxPath) { (response) in
+            if let (song, data) = response {
+                let fileManager = FileManager()
+                let databaseManager = DatabaseManager()
+                if let path = fileManager.saveFile(song.name, data: data) {
+                    song.id = self.id
+                    song.filePath = path
+                    song.changeActionState(.NoAction)
+                    song.updateMetadata()
+                    databaseManager.updateSong(song)
+                    completion(success: true)
+                    return
+                }
+            }
+            completion(success: false)
+        }
+    }
+    
+    func removeFromDevice(completion: (success: Bool) -> ()) {
+        let fileManager = FileManager()
+        if fileManager.removeFile(filePath!) == true {
+            let databaseManager = DatabaseManager()
+            databaseManager.removeSong(self)
+            completion(success: true)
+            return
+        }
+        completion(success: false)
     }
     
     // MARK: - Private methods

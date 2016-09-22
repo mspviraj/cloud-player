@@ -57,6 +57,10 @@ class DatabaseManager {
         })
     }
     
+    func getSongsPending() -> [Song] {
+        return getSongs().filter { $0.state != .NoAction }
+    }
+    
     // MARK: - Songs private methods
     
     private func songAlreadyExists(song: Song) -> Bool {

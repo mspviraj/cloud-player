@@ -48,7 +48,7 @@ class FileManager {
     }
     
     func fileExists(song: Song) -> Bool {
-        return fileManager.fileExistsAtPath(song.filePath!)
+        return song.isOnDevice() && fileManager.fileExistsAtPath(song.filePath!)
     }
     
     // MARK: - Private methods

@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum ActionState {
-    case NoAction
-    case PendingToDownload
-    case PendingToRemoval
+enum ActionState: Int {
+    case NoAction = 0
+    case PendingToDownload = 1
+    case PendingToRemoval = 2
 }

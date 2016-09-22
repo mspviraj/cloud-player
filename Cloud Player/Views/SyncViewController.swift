@@ -34,43 +34,48 @@ class SyncViewController: UIViewController {
     
     private func initializeBindings() {
         applyChangesButton.rx_tap
-            .subscribeNext { [unowned self] (_) in
-                self.showSpinner()
-                self.viewModel.syncSongs()
-            }
+            .bindTo(viewModel.syncSubject)
             .addDisposableTo(disposeBag)
         
         songsTableView.rx_setDelegate(self)
         
         songsTableView.rx_itemSelected
-            .subscribeNext({ [unowned self] (indexPath) in
-                let cell = self.songsTableView.cellForRowAtIndexPath(indexPath) as! SyncTableViewCell
+            .subscribeNext { [weak self] (indexPath) in
+                let cell = self?.songsTableView.cellForRowAtIndexPath(indexPath) as! SyncTableViewCell
                 cell.changeState()
-                })
+                let song = cell.song
+                self?.viewModel.songSubject.onNext(song)
+            }
             .addDisposableTo(disposeBag)
         
-        viewModel.songsObservable.asObservable()
+        viewModel.songsObservable
             .bindTo(songsTableView.rx_itemsWithCellIdentifier("SyncTableViewCell", cellType: SyncTableViewCell.self))
             { (row, element, cell) in
                 cell.song = element
             }
             .addDisposableTo(disposeBag)
         
-        viewModel.songsObservable.asObservable()
-            .subscribeNext { [unowned self] (songs) in
-                self.hideSpinner()
+        viewModel.songsObservable
+            .subscribeNext { [weak self] (songs) in
+                self?.hideSpinner()
                 if songs.count == 0 {
                     print("No songs in Dropbox storage.")
-                } else {
-                    self.viewModel.addSongs(songs)
                 }
             }
             .addDisposableTo(disposeBag)
         
-        viewModel.syncObservable.asObservable()
-            .subscribeNext { [unowned self] (_) in
-                self.hideSpinner()
-                self.navigationController?.popViewControllerAnimated(true)
+        viewModel.syncObservable
+            .subscribeNext { (_) in
+                self.showSpinner()
+            }
+            .addDisposableTo(disposeBag)
+        
+        viewModel.completionObservable
+            .subscribeNext { [weak self] (isCompleted) in
+                if isCompleted == true {
+                    self?.hideSpinner()
+                    self?.navigationController?.popViewControllerAnimated(true)
+                }
             }
             .addDisposableTo(disposeBag)
     }

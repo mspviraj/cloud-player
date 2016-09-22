@@ -50,7 +50,6 @@ class SyncTableViewCell: UITableViewCell {
     // MARK: - Private methods
     
     private func setInitialStatus(animated animated: Bool) {
-        song.changeActionState(.NoAction)
         if song.isOnDevice() == true {
             checkbox.setCheckState(.Checked, animated: animated)
             statusLabel.text = "Device storage"
