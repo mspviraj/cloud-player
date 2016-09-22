@@ -40,14 +40,17 @@ class SongsViewController: UIViewController {
         songsTableView.rx_setDelegate(self)
         
         songsTableView.rx_modelSelected(Song.self)
-            .subscribeNext { [unowned self] (song) in
-                let indexPath = self.songsTableView.indexPathForSelectedRow!
-                self.songsTableView.deselectRowAtIndexPath(indexPath, animated: true)
-                
-                let playerStoryboard = UIStoryboard(name: "Player", bundle: nil)
-                let playerViewController = playerStoryboard.instantiateInitialViewController() as! PlayerViewController
-                playerViewController.song = song
-                self.showViewController(playerViewController, sender: nil)
+            .subscribeNext { [weak self] (song) in
+                if let _self = self {
+                    let indexPath = _self.songsTableView.indexPathForSelectedRow!
+                    _self.songsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    
+                    let playerStoryboard = UIStoryboard(name: "Player", bundle: nil)
+                    let playerViewController = playerStoryboard
+                        .instantiateInitialViewController() as! PlayerViewController
+                    playerViewController.song = song
+                    _self.showViewController(playerViewController, sender: nil)
+                }
             }
             .addDisposableTo(disposeBag)
         
@@ -59,10 +62,12 @@ class SongsViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .subscribeNext { [unowned self] (songs) in
-                self.hideSpinner()
-                if songs.isEmpty == true {
-                    print("No songs. Need to sync!")
+            .subscribeNext { [weak self] (songs) in
+                if let _self = self {
+                    _self.hideSpinner()
+                    if songs.isEmpty == true {
+                        print("No songs. Need to sync!")
+                    }
                 }
             }
             .addDisposableTo(disposeBag)

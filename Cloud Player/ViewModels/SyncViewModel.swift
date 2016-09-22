@@ -47,9 +47,7 @@ class SyncViewModel {
                         allSongs.append(dropboxSong)
                     }
                 }
-                return allSongs.sort({ (a, b) -> Bool in
-                    a.name < b.name
-                })
+                return allSongs.sort(<)
             }
         
         syncObservable = syncSubject.asObservable()

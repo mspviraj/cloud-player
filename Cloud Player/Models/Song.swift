@@ -11,7 +11,7 @@ import RealmSwift
 import SwiftyDropbox
 import AVFoundation
 
-class Song: Object {
+class Song: Object, Comparable {
     
     // MARK: - Properties
     
@@ -133,4 +133,14 @@ class Song: Object {
     private func removeExtensionFromName() {
         name = name.stringByReplacingOccurrencesOfString(".mp3", withString: "")
     }
+}
+
+// MARK: - Comparable protocol methods
+    
+func == (lhs: Song, rhs: Song) -> Bool {
+    return lhs.name == rhs.name
+}
+
+func < (lhs: Song, rhs: Song) -> Bool {
+    return lhs.name < rhs.name
 }
