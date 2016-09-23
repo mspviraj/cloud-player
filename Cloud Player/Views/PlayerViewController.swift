@@ -52,11 +52,45 @@ class PlayerViewController: UIViewController {
     
     private func initializeBindings() {
         playButton.rx_tap
+            .debug("playButton.rx_tap")
             .map { self.song! }
             .bindTo(viewModel.songSubject)
             .addDisposableTo(disposeBag)
         
+        previousButton.rx_tap
+            .debug("previousButton.rx_tap")
+            .map { -1 }
+            .bindTo(viewModel.changeSongSubject)
+            .addDisposableTo(disposeBag)
+        
+        nextButton.rx_tap
+            .debug("nextButton.rx_tap")
+            .map { 1 }
+            .bindTo(viewModel.changeSongSubject)
+            .addDisposableTo(disposeBag)
+        
+        favoriteButton.rx_tap
+            .debug("favoriteButton.rx_tap")
+            .map { self.song! }
+            .bindTo(viewModel.favoriteSubject)
+            .addDisposableTo(disposeBag)
+        
+        viewModel.songObservable
+            .debug("song")
+            .subscribeNext { [weak self] (song) in
+                if let _self = self {
+                    _self.trackLabel.text = song.track!
+                    _self.artistLabel.text = song.artist!
+                    _self.albumLabel.text = song.album!
+                    if let albumArtData = song.albumArt {
+                        _self.albumArtImageView.image = UIImage(data: albumArtData)
+                    }
+                }
+            }
+            .addDisposableTo(disposeBag)
+        
         viewModel.playButtonObservable
+            .debug("playButton")
             .subscribeNext { [weak self] (isPlaying) in
                 if let _self = self {
                     if isPlaying == true {
@@ -66,6 +100,29 @@ class PlayerViewController: UIViewController {
                     }
                 }
             }
+            .addDisposableTo(disposeBag)
+        
+        viewModel.favoriteButtonObservable
+            .debug("favoriteButton")
+            .subscribeNext { [weak self] (success) in
+                if let _self = self {
+                    if success == true {
+                        _self.favoriteButton.title = "<33"
+                    } else {
+                        _self.favoriteButton.title = "<3"
+                    }
+                }
+            }
+            .addDisposableTo(disposeBag)
+        
+        viewModel.durationLabelObservable
+            .debug("durationLabel")
+            .bindTo(duration.rx_text)
+            .addDisposableTo(disposeBag)
+        
+        viewModel.progressSliderObservable
+            .debug("progressSlider")
+            .bindTo(progressSlider.rx_value)
             .addDisposableTo(disposeBag)
     }
 }

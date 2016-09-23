@@ -28,7 +28,7 @@ class SongsTableViewCell: UITableViewCell {
         }
     }
     
-    // MARK: - Methods
+    // MARK: - Private methods
     
     private func setAlbumImage() {
         if let albumArt = song.albumArt {

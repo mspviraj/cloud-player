@@ -29,6 +29,8 @@ class Song: Object, Comparable {
     dynamic var albumArt: NSData? = nil
     let duration: RealmOptional<Int> = RealmOptional<Int>()
     
+    private dynamic var favorite = false
+    
     private dynamic var privateState: Int = ActionState.NoAction.rawValue
     var state: ActionState {
         get {
@@ -73,6 +75,17 @@ class Song: Object, Comparable {
     
     func changeActionState(state: ActionState) {
         self.state = state
+    }
+    
+    func isFavorite() -> Bool {
+        return favorite
+    }
+    
+    func changeFavoriteStatus() {
+        let realm = try! Realm()
+        try! realm.write({
+            favorite = !favorite
+        })
     }
     
     func isOnDevice() -> Bool {
