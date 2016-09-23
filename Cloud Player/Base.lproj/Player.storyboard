@@ -5,12 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Player-->
         <scene sceneID="AvP-Lw-EEC">
             <objects>
-                <viewController id="xLQ-1X-W9U" customClass="PlayerViewController" customModule="Cloud_Player" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="xLQ-1X-W9U" userLabel="Player" customClass="PlayerViewController" customModule="Cloud_Player" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5zh-a9-Aq2"/>
                         <viewControllerLayoutGuide type="bottom" id="08K-qG-TKe"/>
@@ -19,11 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obp-pI-ZYN">
-                                <rect key="frame" x="525" y="72" width="55" height="30"/>
-                                <state key="normal" title="Favorite"/>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SWP-9g-MNK">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SWP-9g-MNK" userLabel="Basic Info">
                                 <rect key="frame" x="254" y="105" width="92" height="79"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="track" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMq-5g-gsl">
@@ -62,19 +59,19 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VYj-lu-lfB">
                                 <rect key="frame" x="82" y="453" width="436" height="31"/>
                             </slider>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Nyw-08-1gw">
-                                <rect key="frame" x="84" y="515" width="432" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Nyw-08-1gw" userLabel="Player Controls">
+                                <rect key="frame" x="52" y="515" width="496" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3p-63-7Lm">
-                                        <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="159" height="30"/>
                                         <state key="normal" title="Previous"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTZ-j2-l24">
-                                        <rect key="frame" x="147" y="0.0" width="138" height="30"/>
+                                        <rect key="frame" x="168" y="0.0" width="160" height="30"/>
                                         <state key="normal" title="Play"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct0-Mu-2nz">
-                                        <rect key="frame" x="294" y="0.0" width="138" height="30"/>
+                                        <rect key="frame" x="337" y="0.0" width="159" height="30"/>
                                         <state key="normal" title="Next"/>
                                     </button>
                                 </subviews>
@@ -83,15 +80,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Nyw-08-1gw" firstAttribute="top" secondItem="VYj-lu-lfB" secondAttribute="bottom" constant="32" id="1mh-97-W4C"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Nyw-08-1gw" secondAttribute="trailing" constant="64" id="209-p6-wnF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nyw-08-1gw" secondAttribute="trailing" constant="32" id="209-p6-wnF"/>
                             <constraint firstItem="VYj-lu-lfB" firstAttribute="top" secondItem="gD8-dF-G44" secondAttribute="bottom" constant="16" id="8bc-kd-pga"/>
                             <constraint firstItem="gD8-dF-G44" firstAttribute="top" secondItem="pVE-6S-68Z" secondAttribute="bottom" constant="16" id="A4X-as-Xf2"/>
-                            <constraint firstItem="obp-pI-ZYN" firstAttribute="top" secondItem="5zh-a9-Aq2" secondAttribute="bottom" constant="8" id="Hmi-BE-WoR"/>
                             <constraint firstItem="gD8-dF-G44" firstAttribute="centerX" secondItem="Wpz-pu-3d7" secondAttribute="centerX" id="LOB-30-cU0"/>
                             <constraint firstItem="pVE-6S-68Z" firstAttribute="centerX" secondItem="Wpz-pu-3d7" secondAttribute="centerX" id="QpK-1V-QfU"/>
                             <constraint firstItem="pVE-6S-68Z" firstAttribute="centerY" secondItem="Wpz-pu-3d7" secondAttribute="centerY" id="RdO-Rh-I0x"/>
-                            <constraint firstItem="Nyw-08-1gw" firstAttribute="leading" secondItem="Wpz-pu-3d7" secondAttribute="leadingMargin" constant="64" id="VJ4-9y-WEe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="obp-pI-ZYN" secondAttribute="trailing" id="YAy-Ku-bwx"/>
+                            <constraint firstItem="Nyw-08-1gw" firstAttribute="leading" secondItem="Wpz-pu-3d7" secondAttribute="leadingMargin" constant="32" id="VJ4-9y-WEe"/>
                             <constraint firstItem="VYj-lu-lfB" firstAttribute="leading" secondItem="Wpz-pu-3d7" secondAttribute="leadingMargin" constant="64" id="lXw-kF-sGf"/>
                             <constraint firstItem="Nyw-08-1gw" firstAttribute="centerX" secondItem="Wpz-pu-3d7" secondAttribute="centerX" id="n5d-fA-4Od"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VYj-lu-lfB" secondAttribute="trailing" constant="64" id="nuE-af-edD"/>
@@ -100,7 +95,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="7um-Ri-EYZ">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="kSX-MG-Pxr"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Edit" id="kSX-MG-Pxr"/>
+                            <barButtonItem title="&lt;3" id="Vod-5k-ud8"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -108,9 +106,9 @@
                         <outlet property="albumLabel" destination="k90-BO-lfB" id="NHs-nI-rth"/>
                         <outlet property="artistLabel" destination="mwa-mB-wci" id="IvY-Sa-wUQ"/>
                         <outlet property="duration" destination="gD8-dF-G44" id="BtG-F3-lNl"/>
-                        <outlet property="favoriteButton" destination="obp-pI-ZYN" id="QIt-3g-8P2"/>
+                        <outlet property="favoriteButton" destination="Vod-5k-ud8" id="fs8-2U-Pcg"/>
                         <outlet property="nextButton" destination="Ct0-Mu-2nz" id="9h7-dp-A0N"/>
-                        <outlet property="playButton" destination="fTZ-j2-l24" id="STJ-b0-Osa"/>
+                        <outlet property="playButton" destination="fTZ-j2-l24" id="fro-zx-h7z"/>
                         <outlet property="previousButton" destination="g3p-63-7Lm" id="XwW-18-Lf7"/>
                         <outlet property="progressSlider" destination="VYj-lu-lfB" id="Wxt-FT-heu"/>
                         <outlet property="trackLabel" destination="kMq-5g-gsl" id="9wD-5v-XML"/>

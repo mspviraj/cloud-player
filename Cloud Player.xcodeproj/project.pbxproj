@@ -21,6 +21,8 @@
 		4F877B5B1D882CE4008E7DCF /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F877B5A1D882CE4008E7DCF /* Song.swift */; };
 		4FACA9A51D8ACDF000EAB476 /* SyncTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA9A41D8ACDF000EAB476 /* SyncTableViewCell.swift */; };
 		4FACA9AA1D8B40F300EAB476 /* ActionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA9A91D8B40F300EAB476 /* ActionState.swift */; };
+		4FAE11B11D953E210003252D /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE11B01D953E210003252D /* PlayerViewModel.swift */; };
+		4FAE11B31D9543F40003252D /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE11B21D9543F40003252D /* PlayerManager.swift */; };
 		4FAE875E1D7EA08400456AE5 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE875D1D7EA08400456AE5 /* API.plist */; };
 		4FAE87611D7EA0B200456AE5 /* API-SAMPLE.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */; };
 		4FAE87651D7EA27000456AE5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE87641D7EA27000456AE5 /* APIConstants.swift */; };
@@ -85,6 +87,8 @@
 		4F877B5A1D882CE4008E7DCF /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		4FACA9A41D8ACDF000EAB476 /* SyncTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncTableViewCell.swift; sourceTree = "<group>"; };
 		4FACA9A91D8B40F300EAB476 /* ActionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionState.swift; sourceTree = "<group>"; };
+		4FAE11B01D953E210003252D /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		4FAE11B21D9543F40003252D /* PlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		4FAE875D1D7EA08400456AE5 /* API.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		4FAE87601D7EA0B200456AE5 /* API-SAMPLE.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API-SAMPLE.plist"; sourceTree = "<group>"; };
 		4FAE87641D7EA27000456AE5 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -228,10 +232,10 @@
 			children = (
 				4FAE87681D7EA67600456AE5 /* LoginViewController.swift */,
 				4FED3ABC1D931F1000762E43 /* PlayerViewController.swift */,
-				4FAF17D11D89DD2D00E6B7BD /* SyncViewController.swift */,
-				4FACA9A41D8ACDF000EAB476 /* SyncTableViewCell.swift */,
 				4FAE876C1D7EA9C600456AE5 /* SongsViewController.swift */,
 				4F5418CB1D888F5C0027E193 /* SongsTableViewCell.swift */,
+				4FAF17D11D89DD2D00E6B7BD /* SyncViewController.swift */,
+				4FACA9A41D8ACDF000EAB476 /* SyncTableViewCell.swift */,
 				4FAE876A1D7EA78400456AE5 /* SettingsViewController.swift */,
 			);
 			path = Views;
@@ -250,8 +254,9 @@
 			isa = PBXGroup;
 			children = (
 				4F5433D21D8735ED00495C32 /* LoginViewModel.swift */,
-				4FAF17CF1D89DCF500E6B7BD /* SyncViewModel.swift */,
+				4FAE11B01D953E210003252D /* PlayerViewModel.swift */,
 				4F877B581D8829E2008E7DCF /* SongsViewModel.swift */,
+				4FAF17CF1D89DCF500E6B7BD /* SyncViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				4F877B561D8829C7008E7DCF /* DropboxManager.swift */,
 				4FAF17D31D89DFA000E6B7BD /* DatabaseManager.swift */,
 				4FB9B8ED1D8B6B7400785876 /* FileManager.swift */,
+				4FAE11B21D9543F40003252D /* PlayerManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -581,6 +587,8 @@
 				4F5433D31D8735ED00495C32 /* LoginViewModel.swift in Sources */,
 				4FAF17D21D89DD2D00E6B7BD /* SyncViewController.swift in Sources */,
 				4FAF17D41D89DFA000E6B7BD /* DatabaseManager.swift in Sources */,
+				4FAE11B11D953E210003252D /* PlayerViewModel.swift in Sources */,
+				4FAE11B31D9543F40003252D /* PlayerManager.swift in Sources */,
 				4FAE876D1D7EA9C600456AE5 /* SongsViewController.swift in Sources */,
 				4F5418CC1D888F5C0027E193 /* SongsTableViewCell.swift in Sources */,
 				4F1CBBAA1D7D98D800C1FF1D /* AppDelegate.swift in Sources */,

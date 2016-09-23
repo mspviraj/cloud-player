@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class PlayerViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     @IBOutlet weak var trackLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
@@ -25,6 +27,8 @@ class PlayerViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let viewModel = PlayerViewModel()
+    private let disposeBag = DisposeBag()
     var song: Song?
     
     // MARK: - Lifecycle
@@ -32,6 +36,7 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
+        initializeBindings()
     }
     
     // MARK: - Private methods
@@ -43,5 +48,24 @@ class PlayerViewController: UIViewController {
         if let albumArtData = song?.albumArt {
             albumArtImageView.image = UIImage(data: albumArtData)
         }
+    }
+    
+    private func initializeBindings() {
+        playButton.rx_tap
+            .map { self.song! }
+            .bindTo(viewModel.songSubject)
+            .addDisposableTo(disposeBag)
+        
+        viewModel.playButtonObservable
+            .subscribeNext { [weak self] (isPlaying) in
+                if let _self = self {
+                    if isPlaying == true {
+                        _self.playButton.setTitle("Pause", forState: UIControlState.Normal)
+                    } else {
+                        _self.playButton.setTitle("Play", forState: UIControlState.Normal)
+                    }
+                }
+            }
+            .addDisposableTo(disposeBag)
     }
 }
