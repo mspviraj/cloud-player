@@ -32,14 +32,12 @@ class SyncTableViewCell: UITableViewCell {
         switch checkbox.checkState {
         case .Checked:
             if song.isOnDevice() == true {
-                song.changeActionState(.PendingToRemoval)
                 checkbox.setCheckState(.Mixed, animated: true)
                 statusLabel.text = "Pending to remove from device"
             } else {
                 setInitialStatus(animated: true)
             }
         case .Unchecked:
-            song.changeActionState(.PendingToDownload)
             checkbox.setCheckState(.Checked, animated: true)
             statusLabel.text = "Pending to download to device"
         case .Mixed:

@@ -60,16 +60,17 @@ class SyncViewModel {
             .subscribeNext { [weak self] (song) in
                 if let _self = self {
                     switch song.state {
-                    case .PendingToDownload:
-                        _self.databaseManager.addSong(song)
-                    case .PendingToRemoval:
-                        _self.databaseManager.updateSong(song)
                     case .NoAction:
-                        if song.isOnDevice() == true {
-                            _self.databaseManager.updateSong(song)
+                        if song.isOnDevice() == false {
+                            song.changeActionState(.PendingToDownload)
+                            _self.databaseManager.addSong(song)
                         } else {
-                            _self.databaseManager.removeSong(song)
+                            song.changeActionState(.PendingToRemoval)
+                            _self.databaseManager.updateSong(song)
                         }
+                    default:
+                        song.changeActionState(.NoAction)
+                        _self.databaseManager.updateSong(song)
                     }
                 }
             }
@@ -79,6 +80,7 @@ class SyncViewModel {
             .subscribeNext { [weak self] (_) in
                 if let _self = self {
                     let songs = _self.databaseManager.getSongsPending()
+                    _self.completionSubject.onNext(songs.count)
                     for song in songs {
                         switch song.state {
                         case .PendingToDownload:
@@ -105,6 +107,16 @@ class SyncViewModel {
                             continue
                         }
                     }
+                }
+            }
+            .addDisposableTo(disposeBag)
+        
+        completionSubject.asObservable()
+            .subscribeNext { [weak self] (_) in
+                if let _self = self {
+                    let songs = _self.databaseManager.getSongs()
+                        .filter { $0.state == .NoAction && $0.isOnDevice() == false }
+                    _self.databaseManager.removeSongs(songs)
                 }
             }
             .addDisposableTo(disposeBag)
