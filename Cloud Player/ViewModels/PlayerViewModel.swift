@@ -69,38 +69,38 @@ class PlayerViewModel {
         
         favoriteSubject.asObservable()
             .debug("favoriteSubject")
-            .subscribeNext { (song) in
+            .subscribe(onNext: { (song) in
                 song.changeFavoriteStatus()
-            }
+            })
             .addDisposableTo(disposeBag)
         
         progressSubject.asObservable()
             .debug("progressSubject")
-            .subscribeNext { (value) in
+            .subscribe(onNext: { (value) in
                 // TODO: Implement to update progress bar value
                 print(value)
-            }
+            })
             .addDisposableTo(disposeBag)
         
         changeSongSubject.asObservable()
             .debug("changeSongSubject")
-            .subscribeNext { (value) in
+            .subscribe(onNext: { (value) in
                 if value == -1 {
                     // TODO: Implement to change song to previous
                 } else {
                     // TODO Implement to change song to next
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         songSubject.asObservable()
             .debug("songSubject")
-            .subscribeNext { (song) in
+            .subscribe(onNext: { (song) in
                 if PlayerManager.shared.isSongInPlayer() == false {
-                    PlayerManager.shared.initializeSong(song)
+                    PlayerManager.shared.initializeSong(song: song)
                 } else {
-                    if PlayerManager.shared.isSongInPlayer(song) == false {
-                        PlayerManager.shared.initializeSong(song)
+                    if PlayerManager.shared.isSongInPlayer(song: song) == false {
+                        PlayerManager.shared.initializeSong(song: song)
                     }
                 }
                 if PlayerManager.shared.isPlaying() == false {
@@ -108,7 +108,7 @@ class PlayerViewModel {
                 } else {
                     PlayerManager.shared.pause()
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
 }

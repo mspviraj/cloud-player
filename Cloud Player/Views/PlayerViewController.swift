@@ -46,30 +46,30 @@ class PlayerViewController: UIViewController {
         artistLabel.text = song?.artist!
         albumLabel.text = song?.album!
         if let albumArtData = song?.albumArt {
-            albumArtImageView.image = UIImage(data: albumArtData)
+            albumArtImageView.image = UIImage(data: albumArtData as Data)
         }
     }
     
     private func initializeBindings() {
-        playButton.rx_tap
+        playButton.rx.tap
             .debug("playButton.rx_tap")
             .map { self.song! }
             .bindTo(viewModel.songSubject)
             .addDisposableTo(disposeBag)
         
-        previousButton.rx_tap
+        previousButton.rx.tap
             .debug("previousButton.rx_tap")
             .map { -1 }
             .bindTo(viewModel.changeSongSubject)
             .addDisposableTo(disposeBag)
         
-        nextButton.rx_tap
+        nextButton.rx.tap
             .debug("nextButton.rx_tap")
             .map { 1 }
             .bindTo(viewModel.changeSongSubject)
             .addDisposableTo(disposeBag)
         
-        favoriteButton.rx_tap
+        favoriteButton.rx.tap
             .debug("favoriteButton.rx_tap")
             .map { self.song! }
             .bindTo(viewModel.favoriteSubject)
@@ -77,34 +77,34 @@ class PlayerViewController: UIViewController {
         
         viewModel.songObservable
             .debug("song")
-            .subscribeNext { [weak self] (song) in
+            .subscribe(onNext: { [weak self] (song) in
                 if let _self = self {
                     _self.trackLabel.text = song.track!
                     _self.artistLabel.text = song.artist!
                     _self.albumLabel.text = song.album!
                     if let albumArtData = song.albumArt {
-                        _self.albumArtImageView.image = UIImage(data: albumArtData)
+                        _self.albumArtImageView.image = UIImage(data: albumArtData as Data)
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.playButtonObservable
             .debug("playButton")
-            .subscribeNext { [weak self] (isPlaying) in
+            .subscribe(onNext: { [weak self] (isPlaying) in
                 if let _self = self {
                     if isPlaying == true {
-                        _self.playButton.setTitle("Pause", forState: UIControlState.Normal)
+                        _self.playButton.setTitle("Pause", for: UIControlState.normal)
                     } else {
-                        _self.playButton.setTitle("Play", forState: UIControlState.Normal)
+                        _self.playButton.setTitle("Play", for: UIControlState.normal)
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.favoriteButtonObservable
             .debug("favoriteButton")
-            .subscribeNext { [weak self] (success) in
+            .subscribe(onNext: { [weak self] (success) in
                 if let _self = self {
                     if success == true {
                         _self.favoriteButton.title = "<33"
@@ -112,17 +112,17 @@ class PlayerViewController: UIViewController {
                         _self.favoriteButton.title = "<3"
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.durationLabelObservable
             .debug("durationLabel")
-            .bindTo(duration.rx_text)
+            .bindTo(duration.rx.text)
             .addDisposableTo(disposeBag)
         
         viewModel.progressSliderObservable
             .debug("progressSlider")
-            .bindTo(progressSlider.rx_value)
+            .bindTo(progressSlider.rx.value)
             .addDisposableTo(disposeBag)
     }
 }

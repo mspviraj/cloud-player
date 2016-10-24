@@ -18,7 +18,7 @@ class LoginViewModel {
     let createAccountButtonVariable = Variable<Void>()
     let authorizedCliendObservable: Observable<DropboxClient>
 
-    private let authorizedClientSubject = BehaviorSubject(value: Dropbox.authorizedClient)
+    private let authorizedClientSubject = BehaviorSubject(value: DropboxClientsManager.authorizedClient)
     private let disposeBag = DisposeBag()
     
     // MARK: - Lifecycle
@@ -26,15 +26,23 @@ class LoginViewModel {
     init() {
         loginButtonVariable.asObservable()
             .skip(1)
-            .subscribeNext { Dropbox.authorizeFromController($0) }
+            .subscribe(onNext: {
+                DropboxClientsManager
+                    .authorizeFromController(UIApplication.shared,
+                                             controller: $0,
+                                             openURL: { (url) in
+                                                UIApplication.shared.openURL(url)
+                    }
+                )
+            })
             .addDisposableTo(disposeBag)
         
         createAccountButtonVariable.asObservable()
             .skip(1)
-            .subscribeNext {
+            .subscribe (onNext: {
                 let url = NSURL(string: "https://www.dropbox.com/m/register")!
-                UIApplication.sharedApplication().openURL(url)
-            }
+                UIApplication.shared.openURL(url as URL)
+            })
             .addDisposableTo(disposeBag)
         
         authorizedCliendObservable = authorizedClientSubject.asObservable()
@@ -45,6 +53,6 @@ class LoginViewModel {
     // MARK: - Methods
     
     func authorizeClient() {
-        authorizedClientSubject.onNext(Dropbox.authorizedClient)
+        authorizedClientSubject.onNext(DropboxClientsManager.authorizedClient)
     }
 }

@@ -15,7 +15,7 @@ class Song: Object, Comparable {
     
     // MARK: - Properties
     
-    dynamic var id: String = NSUUID().UUIDString
+    dynamic var id: String = NSUUID().uuidString
     dynamic var name: String = ""
     dynamic var dropboxPath: String = ""
     dynamic var dropboxId: String? = nil
@@ -93,7 +93,7 @@ class Song: Object, Comparable {
     }
     
     func updateMetadata() {
-        let asset = AVAsset(URL: NSURL(fileURLWithPath: filePath!))
+        let asset = AVAsset(url: NSURL(fileURLWithPath: filePath!) as URL)
         for metadata in asset.commonMetadata {
             switch metadata.commonKey! {
             case "title":
@@ -103,48 +103,48 @@ class Song: Object, Comparable {
             case "albumName":
                 album = metadata.stringValue!
             case "artwork":
-                albumArt = metadata.dataValue
+                albumArt = metadata.dataValue as NSData?
             default:
                 break
             }
         }
     }
     
-    func downloadFromDropbox(completion: (success: Bool) -> ()) {
+    func downloadFromDropbox(completion: @escaping (_ success: Bool) -> ()) {
         let dropboxManager = DropboxManager()
-        dropboxManager.downloadSong(dropboxPath) { (response) in
+        dropboxManager.downloadSong(path: dropboxPath) { (response) in
             if let (song, data) = response {
-                let fileManager = FileManager()
+                let songManager = SongManager()
                 let databaseManager = DatabaseManager()
-                if let path = fileManager.saveFile(song.name, data: data) {
+                if let path = songManager.saveFile(name: song.name, data: data) {
                     song.id = self.id
                     song.filePath = path
-                    song.changeActionState(.NoAction)
+                    song.changeActionState(state: .NoAction)
                     song.updateMetadata()
-                    databaseManager.updateSong(song)
-                    completion(success: true)
+                    _ = databaseManager.updateSong(song: song)
+                    completion(true)
                     return
                 }
             }
-            completion(success: false)
+            completion(false)
         }
     }
     
-    func removeFromDevice(completion: (success: Bool) -> ()) {
-        let fileManager = FileManager()
-        if fileManager.removeFile(filePath!) == true {
+    func removeFromDevice(completion: (_ success: Bool) -> ()) {
+        let songManager = SongManager()
+        if songManager.removeFile(path: filePath!) == true {
             let databaseManager = DatabaseManager()
-            databaseManager.removeSong(self)
-            completion(success: true)
+            _ = databaseManager.removeSong(song: self)
+            completion(true)
             return
         }
-        completion(success: false)
+        completion(false)
     }
     
     // MARK: - Private methods
     
     private func removeExtensionFromName() {
-        name = name.stringByReplacingOccurrencesOfString(".mp3", withString: "")
+        name = name.replacingOccurrences(of: ".mp3", with: "")
     }
 }
 

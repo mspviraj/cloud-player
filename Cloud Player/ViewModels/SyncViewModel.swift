@@ -15,7 +15,7 @@ class SyncViewModel {
     
     private let dropboxManager = DropboxManager()
     private let databaseManager = DatabaseManager()
-    private let fileManager = FileManager()
+    private let songManager = SongManager()
     
     private let dropboxSongsSubject = PublishSubject<[Song]>()
     private let deviceSongsSubject = PublishSubject<[Song]>()
@@ -47,7 +47,7 @@ class SyncViewModel {
                         allSongs.append(dropboxSong)
                     }
                 }
-                return allSongs.sort(<)
+                return allSongs.sorted(by: <)
             }
         
         syncObservable = syncSubject.asObservable()
@@ -57,34 +57,34 @@ class SyncViewModel {
             .map { $0 == 0 }
         
         songSubject.asObservable()
-            .subscribeNext { [weak self] (song) in
+            .subscribe(onNext: { [weak self] (song) in
                 if let _self = self {
                     switch song.state {
                     case .NoAction:
                         if song.isOnDevice() == false {
-                            song.changeActionState(.PendingToDownload)
-                            _self.databaseManager.addSong(song)
+                            song.changeActionState(state: .PendingToDownload)
+                            _ = _self.databaseManager.addSong(song: song)
                         } else {
-                            song.changeActionState(.PendingToRemoval)
-                            _self.databaseManager.updateSong(song)
+                            song.changeActionState(state: .PendingToRemoval)
+                            _ = _self.databaseManager.updateSong(song: song)
                         }
                     default:
-                        song.changeActionState(.NoAction)
-                        _self.databaseManager.updateSong(song)
+                        song.changeActionState(state: .NoAction)
+                        _ = _self.databaseManager.updateSong(song: song)
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         syncSubject.asObservable()
-            .subscribeNext { [weak self] (_) in
+            .subscribe(onNext: { [weak self] (_) in
                 if let _self = self {
                     let songs = _self.databaseManager.getSongsPending()
                     _self.completionSubject.onNext(songs.count)
                     for song in songs {
                         switch song.state {
                         case .PendingToDownload:
-                            song.downloadFromDropbox({ (success) in
+                            song.downloadFromDropbox(completion: { (success) in
                                 if success == true {
                                     _self.completionSubject
                                         .onNext(_self.databaseManager.getSongsPending().count)
@@ -94,7 +94,7 @@ class SyncViewModel {
                                 }
                             })
                         case .PendingToRemoval:
-                            song.removeFromDevice({ (success) in
+                            song.removeFromDevice(completion: { (success) in
                                 if success == true {
                                     _self.completionSubject
                                         .onNext(_self.databaseManager.getSongsPending().count)
@@ -108,17 +108,17 @@ class SyncViewModel {
                         }
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         completionSubject.asObservable()
-            .subscribeNext { [weak self] (_) in
+            .subscribe(onNext: { [weak self] (_) in
                 if let _self = self {
                     let songs = _self.databaseManager.getSongs()
                         .filter { $0.state == .NoAction && $0.isOnDevice() == false }
-                    _self.databaseManager.removeSongs(songs)
+                    _self.databaseManager.removeSongs(songs: songs)
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
     

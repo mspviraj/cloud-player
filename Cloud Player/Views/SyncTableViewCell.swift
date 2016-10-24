@@ -30,29 +30,29 @@ class SyncTableViewCell: UITableViewCell {
     
     func changeState() {
         switch checkbox.checkState {
-        case .Checked:
+        case .checked:
             if song.isOnDevice() == true {
-                checkbox.setCheckState(.Mixed, animated: true)
+                checkbox.setCheckState(.mixed, animated: true)
                 statusLabel.text = "Pending to remove from device"
             } else {
                 setInitialStatus(animated: true)
             }
-        case .Unchecked:
-            checkbox.setCheckState(.Checked, animated: true)
+        case .unchecked:
+            checkbox.setCheckState(.checked, animated: true)
             statusLabel.text = "Pending to download to device"
-        case .Mixed:
+        case .mixed:
             setInitialStatus(animated: true)
         }
     }
     
     // MARK: - Private methods
     
-    private func setInitialStatus(animated animated: Bool) {
+    private func setInitialStatus(animated: Bool) {
         if song.isOnDevice() == true {
-            checkbox.setCheckState(.Checked, animated: animated)
+            checkbox.setCheckState(.checked, animated: animated)
             statusLabel.text = "Device storage"
         } else {
-            checkbox.setCheckState(.Unchecked, animated: animated)
+            checkbox.setCheckState(.unchecked, animated: animated)
             statusLabel.text = "Dropbox storage"
         }
     }

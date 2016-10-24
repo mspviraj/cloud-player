@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         initializeBindings()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.authorizeClient()
     }
@@ -37,21 +37,21 @@ class LoginViewController: UIViewController {
     // MARK: - Private methods
     
     private func initializeBindings() {
-        loginButton.rx_tap
+        loginButton.rx.tap
             .map { [unowned self] _ in
                 return self
             }
             .bindTo(viewModel.loginButtonVariable)
             .addDisposableTo(disposeBag)
         
-        createAccountButton.rx_tap
+        createAccountButton.rx.tap
             .bindTo(viewModel.createAccountButtonVariable)
             .addDisposableTo(disposeBag)
         
         viewModel.authorizedCliendObservable
-            .subscribeNext { [unowned self] _ in
-                self.performSegueWithIdentifier("TabBarControllerSegue", sender: nil)
-            }
+            .subscribe(onNext: { [unowned self] (_) in
+                self.performSegue(withIdentifier: "TabBarControllerSegue", sender: nil)
+            })
             .addDisposableTo(disposeBag)
     }
 }

@@ -34,7 +34,7 @@
 		4FAF17D01D89DCF500E6B7BD /* SyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF17CF1D89DCF500E6B7BD /* SyncViewModel.swift */; };
 		4FAF17D21D89DD2D00E6B7BD /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF17D11D89DD2D00E6B7BD /* SyncViewController.swift */; };
 		4FAF17D41D89DFA000E6B7BD /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF17D31D89DFA000E6B7BD /* DatabaseManager.swift */; };
-		4FB9B8EE1D8B6B7400785876 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9B8ED1D8B6B7400785876 /* FileManager.swift */; };
+		4FB9B8EE1D8B6B7400785876 /* SongManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9B8ED1D8B6B7400785876 /* SongManager.swift */; };
 		4FBB462C1D7DEED6000D3F2F /* Songs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462A1D7DEED6000D3F2F /* Songs.storyboard */; };
 		4FBB462F1D7DEEE5000D3F2F /* Playlists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB462D1D7DEEE5000D3F2F /* Playlists.storyboard */; };
 		4FBB46321D7DEF5C000D3F2F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB46301D7DEF5C000D3F2F /* Settings.storyboard */; };
@@ -103,7 +103,7 @@
 		4FAF17CF1D89DCF500E6B7BD /* SyncViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewModel.swift; sourceTree = "<group>"; };
 		4FAF17D11D89DD2D00E6B7BD /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		4FAF17D31D89DFA000E6B7BD /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		4FB9B8ED1D8B6B7400785876 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		4FB9B8ED1D8B6B7400785876 /* SongManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongManager.swift; sourceTree = "<group>"; };
 		4FBB462B1D7DEED6000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Songs.storyboard; sourceTree = "<group>"; };
 		4FBB462E1D7DEEE5000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Playlists.storyboard; sourceTree = "<group>"; };
 		4FBB46311D7DEF5C000D3F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 			children = (
 				4F877B561D8829C7008E7DCF /* DropboxManager.swift */,
 				4FAF17D31D89DFA000E6B7BD /* DatabaseManager.swift */,
-				4FB9B8ED1D8B6B7400785876 /* FileManager.swift */,
+				4FB9B8ED1D8B6B7400785876 /* SongManager.swift */,
 				4FAE11B21D9543F40003252D /* PlayerManager.swift */,
 			);
 			path = Managers;
@@ -383,21 +383,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Nikola Majcen";
 				TargetAttributes = {
 					4F1CBBA51D7D98D800C1FF1D = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = UR88X5AHVX;
+						LastSwiftMigration = 0800;
 					};
 					4F1CBBBB1D7D98D900C1FF1D = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = UR88X5AHVX;
+						LastSwiftMigration = 0800;
 						TestTargetID = 4F1CBBA51D7D98D800C1FF1D;
 					};
 					4F1CBBC61D7D98D900C1FF1D = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = UR88X5AHVX;
+						LastSwiftMigration = 0800;
 						TestTargetID = 4F1CBBA51D7D98D800C1FF1D;
 					};
 				};
@@ -584,7 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FB9B8EE1D8B6B7400785876 /* FileManager.swift in Sources */,
+				4FB9B8EE1D8B6B7400785876 /* SongManager.swift in Sources */,
 				4F877B5B1D882CE4008E7DCF /* Song.swift in Sources */,
 				4FAE87691D7EA67600456AE5 /* LoginViewController.swift in Sources */,
 				4F5418CA1D8886B60027E193 /* UIViewControllerExtension.swift in Sources */,
@@ -714,8 +717,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -760,8 +765,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -780,6 +787,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -789,11 +797,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 30A3F2E22077B1B04CF75175 /* Pods-Cloud Player.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-Player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -801,11 +811,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 209A4A5BDDB060585E4DB08A /* Pods-Cloud Player.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/Cloud Player/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-Player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -818,6 +830,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-PlayerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cloud Player.app/Cloud Player";
 			};
 			name = Debug;
@@ -831,6 +844,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-PlayerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cloud Player.app/Cloud Player";
 			};
 			name = Release;
@@ -843,6 +857,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-PlayerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Cloud Player";
 			};
 			name = Debug;
@@ -855,6 +870,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikolamajcen.Cloud-PlayerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Cloud Player";
 			};
 			name = Release;
