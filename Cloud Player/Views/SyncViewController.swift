@@ -59,24 +59,30 @@ class SyncViewController: UIViewController {
         
         viewModel.songsObservable
             .subscribe(onNext: { [weak self] (songs) in
-                self?.hideSpinner()
-                if songs.count == 0 {
-                    print("No songs in Dropbox storage.")
+                if let _self = self {
+                    _self.hideSpinner()
+                    if songs.isEmpty == true {
+                        print("No songs in Dropbox storage.")
+                    }
                 }
             })
             .addDisposableTo(disposeBag)
         
         viewModel.syncObservable
-            .subscribe(onNext: { (_) in
-                self.showSpinner()
+            .subscribe(onNext: { [weak self] (_) in
+                if let _self = self {
+                    _self.showSpinner()
+                }
             })
             .addDisposableTo(disposeBag)
         
         viewModel.completionObservable
             .subscribe(onNext: { [weak self] (isCompleted) in
-                if isCompleted == true {
-                    self?.hideSpinner()
-                    _ = self?.navigationController?.popViewController(animated: true)
+                if let _self = self {
+                    if isCompleted == true {
+                        _self.hideSpinner()
+                        _ = _self.navigationController?.popViewController(animated: true)
+                    }
                 }
             })
             .addDisposableTo(disposeBag)
