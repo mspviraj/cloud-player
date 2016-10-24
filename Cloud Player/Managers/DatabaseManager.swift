@@ -19,7 +19,7 @@ class DatabaseManager {
     // MARK: - Songs public methods
     
     func addSong(song: Song) -> DatabaseResult {
-        if songAlreadyExists(song) == true { return .Failure }
+        if songAlreadyExists(song: song) == true { return .Failure }
         let realm = try! Realm()
         try! realm.write({ 
             realm.add(song)
@@ -28,7 +28,7 @@ class DatabaseManager {
     }
     
     func updateSong(song: Song) -> DatabaseResult {
-        if songAlreadyExists(song) == false { return .Failure }
+        if songAlreadyExists(song: song) == false { return .Failure }
         let realm = try! Realm()
         try! realm.write({
             realm.add(song, update: true)
@@ -37,7 +37,7 @@ class DatabaseManager {
     }
     
     func removeSong(song: Song) -> DatabaseResult {
-        if songAlreadyExists(song) == false { return .Failure }
+        if songAlreadyExists(song: song) == false { return .Failure }
         let realm = try! Realm()
         try! realm.write({ 
             realm.delete(song)
@@ -47,7 +47,7 @@ class DatabaseManager {
     
     func getSongs() -> [Song] {
         let realm = try! Realm()
-        return Array(realm.objects(Song.self).sorted("name"))
+        return Array(realm.objects(Song.self).sorted(byProperty: "name"))
     }
     
     func removeSongs(songs: [Song]) {
@@ -65,7 +65,7 @@ class DatabaseManager {
     
     private func songAlreadyExists(song: Song) -> Bool {
         let realm = try! Realm()
-        if realm.objectForPrimaryKey(Song.self, key: song.id) != nil {
+        if realm.object(ofType: Song.self, forPrimaryKey: song.id as AnyObject) != nil {
             return true
         }
         return false

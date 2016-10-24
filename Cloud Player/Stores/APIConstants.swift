@@ -14,16 +14,16 @@ class APIConstants {
     
     static var DropboxAPIKey: String! {
         get {
-            return readConfigurationValue("Dropbox", file: "API", type: "plist")
+            return readConfigurationValue(key: "Dropbox", file: "API", type: "plist")
         }
     }
     
     // MARK: - Private functions
     
     static private func readConfigurationValue(key: String ,file: String, type: String) -> String! {
-        if let path = NSBundle.mainBundle().pathForResource(file, ofType: type) {
+        if let path = Bundle.main.path(forResource: file, ofType: type) {
             let dictionary = NSDictionary(contentsOfFile: path)
-            return dictionary?.valueForKey(key) as! String
+            return dictionary?.value(forKey: key) as! String
         } else {
             return nil
         }

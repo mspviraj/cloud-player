@@ -27,7 +27,7 @@ class FavoritesViewController: UIViewController {
         initializeBindings()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeData()
     }
@@ -35,39 +35,39 @@ class FavoritesViewController: UIViewController {
     // MARK: - Private methods
     
     private func initializeBindings() {
-        favoritesTableView.rx_setDelegate(self)
+        _ = favoritesTableView.rx.setDelegate(self)
         
-        favoritesTableView.rx_modelSelected(Song.self)
-            .subscribeNext { [weak self] (song) in
+        favoritesTableView.rx.modelSelected(Song.self)
+            .subscribe(onNext: { [weak self] (song) in
                 if let _self = self {
                     let indexPath = _self.favoritesTableView.indexPathForSelectedRow!
-                    _self.favoritesTableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    _self.favoritesTableView.deselectRow(at: indexPath, animated: true)
                     
                     let playerStoryboard = UIStoryboard(name: "Player", bundle: nil)
                     let playerViewController = playerStoryboard
                         .instantiateInitialViewController() as! PlayerViewController
                     playerViewController.song = song
-                    _self.showViewController(playerViewController, sender: nil)
+                    _self.show(playerViewController, sender: nil)
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .bindTo(favoritesTableView.rx_itemsWithCellIdentifier("FavoritesTableViewCell", cellType: SongsTableViewCell.self))
+            .bindTo(favoritesTableView.rx.items(cellIdentifier: "FavoritesTableViewCell", cellType: SongsTableViewCell.self))
             { (row, element, cell) in
                 cell.song = element
             }
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .subscribeNext { [weak self] (songs) in
+            .subscribe(onNext: { [weak self] (songs) in
                 if let _self = self {
                     _self.hideSpinner()
                     if songs.isEmpty == true {
                         print("No favorite songs.")
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
     
@@ -79,7 +79,7 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.None
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.none
     }
 }

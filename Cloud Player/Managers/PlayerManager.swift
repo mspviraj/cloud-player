@@ -20,7 +20,7 @@ class PlayerManager {
     // MARK: - Public methods
     
     func initializeSong(song: Song) {
-        audioPlayer = try! AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: song.filePath!))
+        audioPlayer = try! AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: song.filePath!) as URL)
     }
     
     func play() {
@@ -49,7 +49,7 @@ class PlayerManager {
     }
     
     func isSongInPlayer(song: Song) -> Bool {
-        if audioPlayer?.url! == NSURL(fileURLWithPath: song.filePath!) {
+        if audioPlayer?.url! == NSURL(fileURLWithPath: song.filePath!) as URL {
             return true
         }
         return false
@@ -57,7 +57,7 @@ class PlayerManager {
     
     func isPlaying() -> Bool {
         if isEmpty() == false {
-            return audioPlayer!.playing
+            return audioPlayer!.isPlaying
         }
         return false
     }

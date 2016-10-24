@@ -20,14 +20,14 @@ class DropboxManager {
     // MARK: - Lifecycle
     
     init() {
-        client = Dropbox.authorizedClient
+        client = DropboxClientsManager.authorizedClient
     }
     
     // MARK: - Public methods
     
-    func getSongs(completionHandler: ([Song]) -> ()) {
+    func getSongs(completionHandler: @escaping ([Song]) -> ()) {
         client.files
-            .search(path: "", query: ".mp3", start: 0, maxResults: buffer, mode: Files.SearchMode.Filename)
+            .search(path: "", query: ".mp3", start: 0, maxResults: buffer, mode: Files.SearchMode.filename)
             .response { (response, error) in
                 if let result = response {
                     let songs = result.matches
@@ -41,7 +41,7 @@ class DropboxManager {
         }
     }
     
-    func downloadSong(path: String, completionHandler: (Song, NSData)! -> ()) {
+    func downloadSong(path: String, completionHandler: @escaping ((Song, Data)!) -> ()) {
         client.files
             .download(path: path)
             .response { (response, error) in
@@ -54,22 +54,22 @@ class DropboxManager {
             }
     }
     
-    func getThumbnail(path: String, completionHandler: (data: NSData!) -> ()) {
+    func getThumbnail(path: String, completionHandler: @escaping (_ data: NSData?) -> ()) {
         client.files
             .download(path: path)
             .response { (response, error) in
                 if let (metadata, value) = response {
                     
-                    let directory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
-                    let filename = NSURL(fileURLWithPath: directory!).URLByAppendingPathComponent(metadata.name)
+                    let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+                    let filename = NSURL(fileURLWithPath: directory!).appendingPathComponent(metadata.name)
                     
-                    print(value.writeToURL(filename, atomically: true))
+                    try! value.write(to: filename!, options: Data.WritingOptions.atomic)
                     
-                    let playerItem = AVPlayerItem(URL: filename)
+                    let playerItem = AVPlayerItem(url: filename!)
                     let _ = playerItem.asset.commonMetadata.map {
                         if $0.commonKey == "artwork" {
                             if $0.dataValue != nil {
-                                completionHandler(data: $0.dataValue)
+                                completionHandler($0.dataValue as NSData?)
                             }
                         }
                     }

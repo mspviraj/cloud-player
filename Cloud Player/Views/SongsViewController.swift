@@ -29,7 +29,7 @@ class SongsViewController: UIViewController {
         initializeBindings()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeData()
     }
@@ -37,39 +37,42 @@ class SongsViewController: UIViewController {
     // MARK: - Private methods
     
     private func initializeBindings() {
-        songsTableView.rx_setDelegate(self)
+        songsTableView.rx.setDelegate(self)
+            .addDisposableTo(disposeBag)
         
-        songsTableView.rx_modelSelected(Song.self)
-            .subscribeNext { [weak self] (song) in
+        songsTableView.rx.modelSelected(Song.self)
+            .map({ $0 })
+            .subscribe(onNext: { [weak self] (song) in
                 if let _self = self {
                     let indexPath = _self.songsTableView.indexPathForSelectedRow!
-                    _self.songsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    _self.songsTableView.deselectRow(at: indexPath, animated: true)
                     
                     let playerStoryboard = UIStoryboard(name: "Player", bundle: nil)
                     let playerViewController = playerStoryboard
                         .instantiateInitialViewController() as! PlayerViewController
                     playerViewController.song = song
-                    _self.showViewController(playerViewController, sender: nil)
+                    _self.show(playerViewController, sender: nil)
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .bindTo(songsTableView.rx_itemsWithCellIdentifier("SongsTableViewCell", cellType: SongsTableViewCell.self))
+            .map({ $0 })
+            .bindTo(songsTableView.rx.items(cellIdentifier: "SongsTableViewCell", cellType: SongsTableViewCell.self))
             { (row, element, cell) in
                 cell.song = element
             }
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .subscribeNext { [weak self] (songs) in
+            .subscribe(onNext: { [weak self] (songs) in
                 if let _self = self {
                     _self.hideSpinner()
                     if songs.isEmpty == true {
                         print("No songs. Need to sync!")
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
     
@@ -81,7 +84,7 @@ class SongsViewController: UIViewController {
 
 extension SongsViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.None
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.none
     }
 }

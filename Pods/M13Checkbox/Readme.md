@@ -15,6 +15,9 @@ Create beautiful, customizable, extendable, animated checkboxes on iOS. Complete
     * [State](#state)
     * [Appearance](#appearance)
 * [**Getting Started**](#getting-started)
+    * [Demo](#demo)
+        * [Playground](#playground)
+        * [App](#app)
     * [Installation](#installation)
     * [Use](#use)
 * [**Project Structure**](project-structure)
@@ -27,14 +30,7 @@ Create beautiful, customizable, extendable, animated checkboxes on iOS. Complete
 
 ##Recent Changes
 
-- **2.0.0:** M13Checkbox is now implemented in swift! The checkbox has been redone from scratch.
-    - **Added:** 
-        - Animations
-    - **Removed:** 
-        - Gloss overlay
-        - Title label: This is very easy to achieve with auto-layout. It is no longer necessary to be provided by the library. This may be re-implemented in a later release.
-        - Custom checkboxes
-
+- **2.2.0:** M13Checkbox has been converted to Swift 3.
 
 ##Documentation
 
@@ -123,7 +119,19 @@ Check out the demo app to change the properties of the checkbox and see the chan
 
 <br>
 
-##Getting Started
+## Getting Started
+
+### Demo
+
+#### Playground
+
+To see a working playground in action, run the workspace located at path `M13Checkbox Demo Playground/LaunchMe.xcworkspace`. You may need to run the framework scheme and wait for Xcode to process the files, before the playground begins. Open the assistant editor for a live preview of the UI. 
+
+This is a great way to work on customizing the checkbox in code to suit your needs.
+
+#### App
+
+To see the checkbox working on a device, run the demo app included in `M13Checkbox.xcodeproj`. The demo app walks through all the available features. You will need to run a `pod install` in order to build the demo app.
 
 ### Installation
 
@@ -148,7 +156,7 @@ github "Marxon13/M13Checkbox"
 To install via Swift Package Manager, add the following as a dependency to your Package.swift file:
 
 ```
-.Package(url: "git@github.com:Marxon13/M13Checkbox.git", versions: Version(2,0,0)..<Version(2,0,0)),
+.Package(url: "git@github.com:Marxon13/M13Checkbox.git", versions: Version(2,2,0)..<Version(2,2,3)),
 ```
 
 #### Manual
@@ -201,7 +209,7 @@ A shim that gives the ability to set the enum values of `M13Checkbox` in Interfa
 ### Requirements
 
 - Requires iOS 9 or later.
-- Requires Swift 2.2
+- Requires Swift 3.0
 
 ### Support
 
@@ -211,7 +219,7 @@ Open an issue or shoot me an email. Check out previous issues to see if your's h
 
 - Fix the animations between the checked and mixed states when the mark is a radio. When the circle is close to being flat, the left and right edges are not rounded, as well as render some artifacts. 
 - Add visual feedback for UIControl's selected state. So that when the checkbox is touched, it animates slightly towards the new state.
-- Add support for interrupting animations mid-animation. So that if the checkbox is tapped multiple times in quick succession, it animates from the current values, instead of resetting the checkbox and restarting the animations. This might involve replacing CAAnimations with manually done animations using a CADisplayLink.
+- Add support for interrupting animations mid-animation. So that if the checkbox is tapped multiple times in quick succession, it animates from the current values, instead of resetting the checkbox and restarting the animations. This might involve replacing CAAnimations with manually done animations using a CADisplayLink. Or the new UIViewPropertyAnimator.
 - tvOS support.
 - watchOS support.
 - Mac OS X support.

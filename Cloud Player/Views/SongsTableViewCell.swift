@@ -32,7 +32,7 @@ class SongsTableViewCell: UITableViewCell {
     
     private func setAlbumImage() {
         if let albumArt = song.albumArt {
-            albumImageView.image = UIImage(data: albumArt)
+            albumImageView.image = UIImage(data: albumArt as Data)
         } else {
             // TODO: Add sample image
             albumImageView.image = UIImage()

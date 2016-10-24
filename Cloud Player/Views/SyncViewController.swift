@@ -33,50 +33,58 @@ class SyncViewController: UIViewController {
     // MARK: - Private methods
     
     private func initializeBindings() {
-        applyChangesButton.rx_tap
+        applyChangesButton.rx.tap
             .bindTo(viewModel.syncSubject)
             .addDisposableTo(disposeBag)
         
-        songsTableView.rx_setDelegate(self)
+        _ = songsTableView.rx.setDelegate(self)
         
-        songsTableView.rx_itemSelected
-            .subscribeNext { [weak self] (indexPath) in
-                let cell = self?.songsTableView.cellForRowAtIndexPath(indexPath) as! SyncTableViewCell
-                cell.changeState()
-                let song = cell.song
-                self?.viewModel.songSubject.onNext(song)
-            }
+        songsTableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] (indexPath) in
+                if let _self = self {
+                    let cell = _self.songsTableView.cellForRow(at: indexPath) as! SyncTableViewCell
+                    cell.changeState()
+                    let song = cell.song!
+                    _self.viewModel.songSubject.onNext(song)
+                }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .bindTo(songsTableView.rx_itemsWithCellIdentifier("SyncTableViewCell", cellType: SyncTableViewCell.self))
+            .bindTo(songsTableView.rx.items(cellIdentifier: "SyncTableViewCell", cellType: SyncTableViewCell.self))
             { (row, element, cell) in
                 cell.song = element
             }
             .addDisposableTo(disposeBag)
         
         viewModel.songsObservable
-            .subscribeNext { [weak self] (songs) in
-                self?.hideSpinner()
-                if songs.count == 0 {
-                    print("No songs in Dropbox storage.")
+            .subscribe(onNext: { [weak self] (songs) in
+                if let _self = self {
+                    _self.hideSpinner()
+                    if songs.isEmpty == true {
+                        print("No songs in Dropbox storage.")
+                    }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.syncObservable
-            .subscribeNext { (_) in
-                self.showSpinner()
-            }
+            .subscribe(onNext: { [weak self] (_) in
+                if let _self = self {
+                    _self.showSpinner()
+                }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.completionObservable
-            .subscribeNext { [weak self] (isCompleted) in
-                if isCompleted == true {
-                    self?.hideSpinner()
-                    self?.navigationController?.popViewControllerAnimated(true)
+            .subscribe(onNext: { [weak self] (isCompleted) in
+                if let _self = self {
+                    if isCompleted == true {
+                        _self.hideSpinner()
+                        _ = _self.navigationController?.popViewController(animated: true)
+                    }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
     
@@ -88,7 +96,7 @@ class SyncViewController: UIViewController {
 
 extension SyncViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.None
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.none
     }
 }

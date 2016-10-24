@@ -14,15 +14,15 @@ extension UIViewController {
     // MARK: - Spinner
     
     func showSpinner() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        _ = MBProgressHUD.showAdded(to: self.view, animated: true)
     }
     
     func showSpinnerWithText(text: String) {
-        let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        let spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinner.label.text = text
     }
     
     func hideSpinner() {
-        MBProgressHUD.hideHUDForView(self.view, animated: true)
+        _ = MBProgressHUD.hide(for: self.view, animated: true)
     }
 }
