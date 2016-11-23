@@ -15,10 +15,10 @@ class PlayerViewModel {
     
     private let disposeBag = DisposeBag()
     
+    let songSubject = PublishSubject<Song>()
     let favoriteSubject = PublishSubject<Song>()
     let progressSubject = PublishSubject<Int>()
     let changeSongSubject = PublishSubject<Int>()
-    let songSubject = PublishSubject<Song>()
     
     let songObservable: Observable<Song>
     let favoriteButtonObservable: Observable<Bool>
@@ -63,9 +63,22 @@ class PlayerViewModel {
         
         playButtonObservable = songSubject.asObservable()
             .debug("playButtonObservable")
-            .map { _ in
-                return PlayerManager.shared.isPlaying()
-        }
+            .map { return PlayerManager.shared.isPlaying(song: $0) }
+        
+        songSubject.asObservable()
+            .debug("songSubject")
+            .skip(1)
+            .subscribe(onNext: { (song) in
+                if PlayerManager.shared.isInPlayerQueue(song: song) == false {
+                    PlayerManager.shared.initializeSong(song: song)
+                }
+                if PlayerManager.shared.isPlaying(song: song) == false {
+                    PlayerManager.shared.play()
+                } else {
+                    PlayerManager.shared.pause()
+                }
+            })
+            .addDisposableTo(disposeBag)
         
         favoriteSubject.asObservable()
             .debug("favoriteSubject")
@@ -89,24 +102,6 @@ class PlayerViewModel {
                     // TODO: Implement to change song to previous
                 } else {
                     // TODO Implement to change song to next
-                }
-            })
-            .addDisposableTo(disposeBag)
-        
-        songSubject.asObservable()
-            .debug("songSubject")
-            .subscribe(onNext: { (song) in
-                if PlayerManager.shared.isSongInPlayer() == false {
-                    PlayerManager.shared.initializeSong(song: song)
-                } else {
-                    if PlayerManager.shared.isSongInPlayer(song: song) == false {
-                        PlayerManager.shared.initializeSong(song: song)
-                    }
-                }
-                if PlayerManager.shared.isPlaying() == false {
-                    PlayerManager.shared.play()
-                } else {
-                    PlayerManager.shared.pause()
                 }
             })
             .addDisposableTo(disposeBag)

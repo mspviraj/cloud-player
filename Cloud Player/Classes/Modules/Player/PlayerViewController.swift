@@ -35,46 +35,40 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeUI()
-        initializeBindings()
+        initializeActions()
+        initializeControls()
+        initializeData()
     }
     
     // MARK: - Private methods
     
-    private func initializeUI() {
-        trackLabel.text = song?.track!
-        artistLabel.text = song?.artist!
-        albumLabel.text = song?.album!
-        if let albumArtData = song?.albumArt {
-            albumArtImageView.image = UIImage(data: albumArtData as Data)
-        }
-    }
-    
-    private func initializeBindings() {
+    private func initializeActions() {
         playButton.rx.tap
-            .debug("playButton.rx_tap")
+            .debug("playButton.rx.tap")
             .map { self.song! }
             .bindTo(viewModel.songSubject)
             .addDisposableTo(disposeBag)
         
         previousButton.rx.tap
-            .debug("previousButton.rx_tap")
+            .debug("previousButton.rx.tap")
             .map { -1 }
             .bindTo(viewModel.changeSongSubject)
             .addDisposableTo(disposeBag)
         
         nextButton.rx.tap
-            .debug("nextButton.rx_tap")
+            .debug("nextButton.rx.tap")
             .map { 1 }
             .bindTo(viewModel.changeSongSubject)
             .addDisposableTo(disposeBag)
         
         favoriteButton.rx.tap
-            .debug("favoriteButton.rx_tap")
+            .debug("favoriteButton.rx.tap")
             .map { self.song! }
             .bindTo(viewModel.favoriteSubject)
             .addDisposableTo(disposeBag)
-        
+    }
+    
+    private func initializeControls() {
         viewModel.songObservable
             .debug("song")
             .subscribe(onNext: { [weak self] (song) in
@@ -82,6 +76,11 @@ class PlayerViewController: UIViewController {
                     _self.trackLabel.text = song.track!
                     _self.artistLabel.text = song.artist!
                     _self.albumLabel.text = song.album!
+                    if song.isFavorite() == true {
+                        _self.favoriteButton.title = "<33"
+                    } else {
+                        _self.favoriteButton.title = "<3"
+                    }
                     if let albumArtData = song.albumArt {
                         _self.albumArtImageView.image = UIImage(data: albumArtData as Data)
                     }
@@ -94,9 +93,9 @@ class PlayerViewController: UIViewController {
             .subscribe(onNext: { [weak self] (isPlaying) in
                 if let _self = self {
                     if isPlaying == true {
-                        _self.playButton.setTitle("Pause", for: UIControlState.normal)
+                        _self.playButton.setTitle("Pause", for: .normal)
                     } else {
-                        _self.playButton.setTitle("Play", for: UIControlState.normal)
+                        _self.playButton.setTitle("Play", for: .normal)
                     }
                 }
             })
@@ -124,5 +123,9 @@ class PlayerViewController: UIViewController {
             .debug("progressSlider")
             .bindTo(progressSlider.rx.value)
             .addDisposableTo(disposeBag)
+    }
+    
+    private func initializeData() {
+        viewModel.songSubject.onNext(song!)
     }
 }

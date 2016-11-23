@@ -30,9 +30,7 @@ class LoginViewModel {
                 DropboxClientsManager
                     .authorizeFromController(UIApplication.shared,
                                              controller: $0,
-                                             openURL: { (url) in
-                                                UIApplication.shared.openURL(url)
-                    }
+                                             openURL: { UIApplication.shared.openURL($0) }
                 )
             })
             .addDisposableTo(disposeBag)
