@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         DropboxClientsManager.setupWithAppKey(APIConstants.DropboxAPIKey)
         if DropboxClientsManager.authorizedClient !=  nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
             window?.rootViewController = viewController
         }
@@ -35,6 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error \(error): \(description)")
             }
         }
-        return false
+        return true
     }
 }

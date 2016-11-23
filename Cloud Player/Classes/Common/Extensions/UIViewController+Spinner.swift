@@ -1,5 +1,5 @@
 //
-//  UIViewControllerExtension.swift
+//  UIViewController+Spinner.swift
 //  Cloud Player
 //
 //  Created by Nikola Majcen on 13/09/16.

@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func logoutButtonPressed(_ sender: UIBarButtonItem) {
         DropboxClientsManager.unlinkClients()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
